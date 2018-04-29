@@ -1,6 +1,9 @@
 var express = require("express");
-// var path = require("path");
+var xoauth2 = require('xoauth2');
+var fs = require('fs')
+var logger = require("morgan");
 var bodyParser = require('body-parser');
+var nconf = require('nconf');
 var app = express();
 var router = express.Router();
 var path = __dirname + '/views/';
@@ -11,7 +14,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // log requests to stdout and also
-// log HTTP requests to a file in combined forma
+// log HTTP requests to a file in combined format
+var accessLogStream = fs.createWriteStream(__dirname + '/access.log', { flags: 'a' });
+app.use(logger('dev'));
+app.use(logger('combined', { stream: accessLogStream }));
 
 app.set('port', (process.env.PORT || 5000));
 
