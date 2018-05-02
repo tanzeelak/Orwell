@@ -4,8 +4,9 @@
 A narrative illustrating the lack of security on social media. Orwell's story is based on the concept of eyes watching you.
 
 ## Built With
-- Node.js: JavaScript run-time environment that executes JavaScript server-side code.
-- Tracking.js: Library for computer vision.
+- [Node.js](https://nodejs.org/en/): JavaScript run-time environment that executes JavaScript server-side code.
+- [Tracking.js](https://trackingjs.com/): Library for computer vision.
+  - [Here for the readme](https://github.com/eduardolundgren/tracking.js)
 
 ## Setting up the environment
 - Clone this repository.
