@@ -1,12 +1,10 @@
 var express = require("express");
-var xoauth2 = require('xoauth2');
 var fs = require('fs')
 var logger = require("morgan");
 var bodyParser = require('body-parser');
-var nconf = require('nconf');
-var app = express();
+var path = require('path');
 var router = express.Router();
-var path = require('path')
+var app = express();
 
 // include client-side assets and use the bodyParser
 app.use(bodyParser.urlencoded({ extended: false }));
