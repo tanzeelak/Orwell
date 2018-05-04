@@ -5,53 +5,153 @@ body {
 .inline-wrapper {
   display: inline-block; }
 
-.header {
+.subtitle {
+  font-size: 16px; }
+
+#header {
   background-color: grey;
   height: 70px;
-  width: 100%; }
-
-.header-logo {
-  display: flex;
-  flex-direction: row;
-  height: 100%;
-  margin: 0 25px;
-  align-items: center;
-  line-height: 70px; }
-
-.header-logo-text {
-  color: white;
-  font-size: 30px;
-  padding-left: 10px;
-  vertical-align: middle; }
-
-.header-logo-image {
-  display: inline-block;
-  height: 30px;
-  width: 30px; }
+  width: 100%;
+  position: fixed;
+  top: 0;
+  index: 99; }
+  #header .header-logo {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    margin: 0 25px;
+    align-items: center;
+    line-height: 70px; }
+    #header .header-logo .header-logo-text {
+      color: white;
+      font-size: 30px;
+      padding-left: 10px;
+      vertical-align: middle; }
+    #header .header-logo .header-logo-image {
+      display: inline-block;
+      height: 30px;
+      width: 30px; }
 
 #header-search-wrapper {
   float: right; }
-
-.header-search {
-  line-height: 70px;
-  vertical-align: middle; }
+  #header-search-wrapper .header-search {
+    line-height: 70px;
+    vertical-align: middle;
+    margin: 0 25px; }
 
 #header-menu-wrapper {
   float: right;
   height: 100%; }
+  #header-menu-wrapper .header-menu {
+    display: flex;
+    flex-direction: row;
+    margin-right: 25px;
+    height: 100%;
+    align-items: center; }
+  #header-menu-wrapper .header-menu-icon {
+    height: 20px;
+    width: 20px;
+    background-color: lightgrey;
+    border-radius: 50px;
+    margin: 0 7px; }
 
-.header-menu {
-  display: flex;
-  flex-direction: row;
-  margin-right: 25px;
+#main {
   height: 100%;
-  align-items: center; }
+  width: 100vw;
+  padding-top: 70px; }
+  #main #main-wrapper {
+    padding: 2% 7%; }
+    #main #main-wrapper #main-content {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: row; }
+      #main #main-wrapper #main-content .content-left {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1.5;
+        height: 100%;
+        margin-right: 30px;
+        max-width: 60%; }
+      #main #main-wrapper #main-content .content-right {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        height: 100%;
+        max-width: 40%; }
 
-.header-menu-icon {
-  height: 20px;
-  width: 20px;
-  background-color: lightgrey;
-  border-radius: 50px;
-  margin: 0 7px; }
+.card {
+  padding: 25px 40px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  background-color: lightgrey; }
+
+.advertisement-card {
+  height: 30vh; }
+
+.post-pic {
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  border-radius: 30px;
+  vertical-align: middle; }
+
+.post-name {
+  display: inline-block;
+  font-size: 20px;
+  vertical-align: middle;
+  margin: 0; }
+
+.post-picture-single img {
+  width: 100%; }
+
+.post-react {
+  display: flex;
+  flex-direction: row; }
+
+.post-react {
+  margin: 15px 0; }
+  .post-react .post-react-icon {
+    height: 30px;
+    width: 30px;
+    background-color: darkgrey;
+    border-radius: 50px;
+    margin: 0 7px; }
+
+.post-comment textarea {
+  width: 100%;
+  resize: none; }
+
+.most-trending-picture {
+  text-align: center; }
+  .most-trending-picture img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%; }
+
+.trending-persons-card {
+  margin-top: 20px;
+  margin-bottom: 0;
+  background-color: white;
+  padding: 15px; }
+  .trending-persons-card .trending-person {
+    margin: 10px 0; }
+    .trending-persons-card .trending-person img {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      vertical-align: middle; }
+    .trending-persons-card .trending-person p {
+      display: inline-block;
+      margin: 0; }
+    .trending-persons-card .trending-person .add-person-icon {
+      display: inline-block;
+      height: 20px;
+      width: 20px;
+      background-color: darkgrey;
+      border-radius: 50px;
+      margin: 0 7px;
+      vertical-align: middle;
+      float: right; }
 
 /*# sourceMappingURL=social.css.map */
