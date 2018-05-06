@@ -21,13 +21,8 @@ app.use(express.static(__dirname));
 app.set('port', (process.env.PORT || 5000));
 
 router.get("/",function(req,res){
-    res.sendFile(path.join(__dirname + '/views/' + 'index.html'));
-});
-
-router.get("/social",function(req,res){
     res.sendFile(path.join(__dirname + '/views/' + 'social.html'));
 });
-
 
 router.get("*",function(req,res){
   res.sendFile(path.join(__dirname + '/views/' + '404.html'));
