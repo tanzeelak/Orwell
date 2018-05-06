@@ -282,6 +282,10 @@ raw-body@2.3.2:
     iconv-lite "0.4.19"
     unpipe "1.0.0"
 
+recordrtc@^5.4.6:
+  version "5.4.6"
+  resolved "https://registry.yarnpkg.com/recordrtc/-/recordrtc-5.4.6.tgz#be1c570550708363b23fba530326854be0683210"
+
 safe-buffer@5.1.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.1.tgz#893312af69b2123def71f57889001671eeb2c853"

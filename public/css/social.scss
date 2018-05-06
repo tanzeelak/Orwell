@@ -120,7 +120,8 @@ body {
 }
 
 .advertisement-card {
-  height: 30vh;
+  display: flex;
+  flex-direction: column;
 }
 
 // POST CARD
