@@ -100,7 +100,9 @@
           </div>
 
           <div class="card advertisement-card">
-            <!-- TODO -->
+            <video style="height:100px" hidden autoplay></video>
+            <br>
+            <button id="btn-stop-recording">Stop Recording</button>
           </div>
 
         </div>
@@ -109,4 +111,7 @@
     </div>
   </div>
 </body>
+<script src="../../node_modules/recordrtc/RecordRTC.min.js"></script>
+<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+<script src="../public/js/camcord.js"></script>
 </html>

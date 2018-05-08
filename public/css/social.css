@@ -87,7 +87,8 @@ body {
   background-color: lightgrey; }
 
 .advertisement-card {
-  height: 30vh; }
+  display: flex;
+  flex-direction: column;}
 
 .post-pic {
   display: inline-block;
