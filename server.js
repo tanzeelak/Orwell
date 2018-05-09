@@ -23,6 +23,9 @@ app.set('port', (process.env.PORT || 5000));
 router.get("/",function(req,res){
     res.sendFile(path.join(__dirname + '/views/' + 'social.html'));
 });
+router.get("/eye",function(req,res){
+    res.sendFile(path.join(__dirname + '/views/' + 'eye.html'));
+});
 
 router.get("*",function(req,res){
   res.sendFile(path.join(__dirname + '/views/' + '404.html'));
