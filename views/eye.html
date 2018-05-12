@@ -1,80 +1,111 @@
 <!DOCTYPE html>
 <html>
-        <head>
-            <meta charset="utf-8">
-            <title>My first three.js app</title>
-            <style>
-                body { margin: 0; }
-                canvas { width: 100%; height: 100%}
-            </style>
-        </head>
-        <body>
-            <script src="/node_modules/three/build/three.min.js"></script>
-            <script>
-                var scene, camera, renderer;
 
-                var WIDTH  = window.innerWidth;
-                var HEIGHT = window.innerHeight;
+<head>
+    <meta charset="utf-8">
+    <title>My first three.js app</title>
+    <style>
+        body {
+            margin: 0;
+        }
 
-                var SPEED = 0.01;
+        canvas {
+            width: 100%;
+            height: 100%
+        }
+    </style>
+</head>
 
-                var mesh = null;
+<body>
 
-                function init() {
-                    scene = new THREE.Scene();
+    <canvas id="myCanvas"></canvas>
 
-                    initMesh();
-                    initCamera();
-                    initRenderer();
-                    initLights();
+    <script src="/node_modules/three/build/three.min.js"></script>
+    <script>
+        var renderer,
+            scene,
+            camera,
+            myCanvas = document.getElementById('myCanvas');
 
-                    document.body.appendChild(renderer.domElement);
-                }
+        var eye_ball_mesh, lower_lid_mesh, upper_lid_mesh;
 
-                function initCamera() {
-                    camera = new THREE.PerspectiveCamera(70, WIDTH / HEIGHT, 1, 10);
-                    camera.position.set(0, 3.5, 5);
-                    camera.lookAt(scene.position);
-                }
+        //RENDERER
+        renderer = new THREE.WebGLRenderer({
+            canvas: myCanvas,
+            antialias: true
+        });
+        renderer.setClearColor(0x000000);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(window.innerWidth, window.innerHeight);
 
-                function initRenderer() {
-                    renderer = new THREE.WebGLRenderer({ antialias: true });
-                    renderer.setSize(WIDTH, HEIGHT);
-                }
+        //CAMERA
+        camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 1000);
 
-                function initCube() {
-                    cube = new THREE.Mesh(new THREE.CubeGeometry(2, 2, 2), new THREE.MeshNormalMaterial());
-                    scene.add(cube);
-                }
+        //SCENE
+        scene = new THREE.Scene();
+
+        //LIGHTS
+        var light = new THREE.AmbientLight(0xffffff, 0.5);
+        scene.add(light);
+
+        var light2 = new THREE.PointLight(0xffffff, 0.5);
+        scene.add(light2);
+
+        var loader = new THREE.JSONLoader();
+        var texture = new THREE.TextureLoader().load('/assets/neweye.jpg');
+        var material = new THREE.MeshBasicMaterial({ map: texture })
+        var material_eye_lid = new THREE.MeshBasicMaterial({ color: 0x303030 });
+        loader.load('/assets/eye_ball.json', eye_ball);
+        loader.load('/assets/upper_lid.json', upper_lid);
+        loader.load('/assets/lower_lid.json', lower_lid)
+
+        function lower_lid(geometry, materials) {
+            lower_lid_mesh = new THREE.Mesh(geometry, material_eye_lid);
+            scene.add(lower_lid_mesh);
+            lower_lid_mesh.position.z = -10;
+        }
 
 
-                function initMesh() {
-                    var loader = new THREE.JSONLoader();
-                    loader.load('/assets/eyeball3new.json', function(geometry, materials) {
-                        mesh = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial(materials));
-                        scene.add(mesh);
-                    });
-                }
+        function upper_lid(geometry, materials) {
+            upper_lid_mesh = new THREE.Mesh(geometry, material_eye_lid);
+            scene.add(upper_lid_mesh);
+            upper_lid_mesh.position.z = -10;
+        }
 
-                function initLights(){
-                    var light = new THREE.AmbientLight(0xffffff);
-                    scene.add(light);
-                }
+        function eye_ball(geometry, materials) {
+            eye_ball_mesh = new THREE.Mesh(geometry, material);
+            scene.add(eye_ball_mesh);
+            eye_ball_mesh.position.z = -10;
 
-                /*function rotateMesh() {
-                    mesh.rotation.x -= SPEED * 2;
-                    mesh.rotation.y -= SPEED;
-                    mesh.rotation.z -= SPEED * 3;
-                }*/
+        }
 
-                function render() {
-                    requestAnimationFrame(render);
-                    //rotateMesh();
-                    renderer.render(scene, camera);
-                }
+        var upper_flag = 0;
 
-                init();
-                render();
-            </script>
-        </body>
+        var animate = function () {
+            requestAnimationFrame(animate);
+
+           if (upper_lid_mesh.rotation.x < -0.04)
+            {
+               upper_flag = 0;
+            }
+            else if (upper_lid_mesh.rotation.x > 1)
+            {
+               upper_flag = 1;
+            }
+            if (!upper_flag)
+            {
+                upper_lid_mesh.rotation.x += 0.015;
+            }
+            else
+            {
+               upper_lid_mesh.rotation.x -= 0.015;
+            }
+
+            renderer.render(scene, camera);
+        };
+
+        animate();
+    </script>
+</body>
+
 </html>
