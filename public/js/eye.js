@@ -4,7 +4,7 @@ setTimeout(function(){
 
 
 var renderer,
-	scene,
+	scenes = [],
 	camera,
 	myCanvas = document.getElementById('myCanvas');
 
@@ -15,6 +15,8 @@ renderer = new THREE.WebGLRenderer({
 	canvas: myCanvas,
 	antialias: true
 });
+
+// renderer.autoClear();
 renderer.setClearColor(0x000000);
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -23,14 +25,15 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 1000);
 
 //SCENE
-scene = new THREE.Scene();
+scenes[0] = new THREE.Scene();
+
 
 //LIGHTS
 var light = new THREE.AmbientLight(0xffffff, 0.5);
-scene.add(light);
+scenes[0].add(light);
 
 var light2 = new THREE.PointLight(0xffffff, 0.5);
-scene.add(light2);
+scenes[0].add(light2);
 
 var loader = new THREE.JSONLoader();
 var texture = new THREE.TextureLoader().load('/assets/neweye.jpg');
@@ -46,19 +49,19 @@ loader.load('/assets/lower_lid.json', lower_lid);
 
 function lower_lid(geometry, materials) {
 	lower_lid_mesh = new THREE.Mesh(geometry, material_eye_lid);
-	scene.add(lower_lid_mesh);
+	scenes[0].add(lower_lid_mesh);
 	lower_lid_mesh.position.z = -10;
 }
 
 function upper_lid(geometry, materials) {
 	upper_lid_mesh = new THREE.Mesh(geometry, material_eye_lid);
-	scene.add(upper_lid_mesh);
+	scenes[0].add(upper_lid_mesh);
 	upper_lid_mesh.position.z = -10;
 }
 
 function eye_ball(geometry, materials) {
 	eye_ball_mesh = new THREE.Mesh(geometry, material);
-	scene.add(eye_ball_mesh);
+	scenes[0].add(eye_ball_mesh);
 	eye_ball_mesh.position.z = -10;
 }
 
@@ -76,7 +79,7 @@ var animate = function () {
 	} else {
 		upper_lid_mesh.rotation.x -= 0.015;
 	}
-	renderer.render(scene, camera);
+	renderer.render(scenes[0], camera);
 };
 
 animate();
