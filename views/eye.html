@@ -33,7 +33,6 @@
 	<script type="text/javascript" src="/node_modules/dat.gui/build/dat.gui.min.js"></script>
 	<script type="text/javascript" src="/node_modules/tracking/examples/assets/stats.min.js"></script>
 	<script type="text/javascript" src="/public/js/main.js"></script>
-	<script type="text/javascript" src="/public/js/iRotate.js"></script>
 	<script src="/node_modules/three/build/three.min.js"></script>
     
     <script>
@@ -100,9 +99,6 @@
         var upper_flag = 0;
 
         var animate = function () {
-            eye_ball_mesh.rotation.y = ((globalX - 160)/160) * MaxXRot;
-            eye_ball_mesh.rotation.x = ((globalY - 120)/120) * MaxYRot;
-            
             requestAnimationFrame(animate);
 
            if (upper_lid_mesh.rotation.x < -0.04)
@@ -122,19 +118,23 @@
                upper_lid_mesh.rotation.x -= 0.015;
             }
 
+            eye_ball_mesh.rotation.y = -(((globalX - 160)/160) * MaxXRot);
+            eye_ball_mesh.rotation.x = -(((globalY - 120)/120) * MaxYRot);
+
             renderer.render(scene, camera);
         };
 
         window.onload = function() {
-            var video = document.getElementById("video");
-			var canvas = document.getElementById("videocanvas");
-			var context = canvas.getContext("2d");
-			var tracker = new tracking.ObjectTracker("face");
+            var video = document.getElementById('video');
+			var canvas = document.getElementById('videocanvas');
+            var context = canvas.getContext('2d');
+            
+			var tracker = new tracking.ObjectTracker('face');
 			tracker.setInitialScale(4);
 			tracker.setStepSize(2);
-			tracker.setEdgesDensity(0.1);
+            tracker.setEdgesDensity(0.1);
+            
 			tracking.track(video, tracker, { camera: true });
-			tracker = initTracking("video");
 
             tracker.on("track", function(event) {
                 event.data.forEach(function(rect) {
@@ -144,14 +144,15 @@
 
                     globalX = rect.x + (rect.width/2);
                     globalY = rect.y + (rect.height/2);
-                })
-            })
+                });
+            });
+
+            var gui = new dat.GUI();
+            gui.add(tracker, "edgesDensity", 0.1, 0.5).step(0.01);
+		    gui.add(tracker, "initialScale", 1.0, 10.0).step(0.1);
+		    gui.add(tracker, "stepSize", 1, 5).step(0.1);
         }
 
-        var gui = new dat.GUI();
-        gui.add(tracker, "edgesDensity", 0.1, 0.5).step(0.01);
-		gui.add(tracker, "initialScale", 1.0, 10.0).step(0.1);
-		gui.add(tracker, "stepSize", 1, 5).step(0.1);
     </script>
 </body>
 
