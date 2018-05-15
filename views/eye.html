@@ -15,14 +15,12 @@
 
                 var WIDTH  = window.innerWidth;
                 var HEIGHT = window.innerHeight;
-
                 var SPEED = 0.01;
-
                 var mesh = null;
 
                 function init() {
                     scene = new THREE.Scene();
-
+                    
                     initMesh();
                     initCamera();
                     initRenderer();
@@ -47,9 +45,9 @@
                     scene.add(cube);
                 }
 
-
                 function initMesh() {
                     var loader = new THREE.JSONLoader();
+
                     loader.load('/assets/eyeball3new.json', function(geometry, materials) {
                         mesh = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial(materials));
                         scene.add(mesh);
