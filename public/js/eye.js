@@ -2,6 +2,12 @@ setTimeout(function () {
 	document.getElementById('myCanvas').classList.remove('hide');
 }, 2000);
 
+s = document.getElementById('content').style;
+s.opacity = 1;
+
+function fadePage() {
+	(s.opacity -= .01) < 0 ? s.display = "none" : setTimeout(fadePage, 400)
+}
 
 var renderer,
 	scenes = [],
@@ -60,21 +66,36 @@ function loadLoader() {
 }
 
 function lower_lid(geometry, materials) {
-	lower_lid_mesh = new THREE.Mesh(geometry, material_eye_lid);
-	scenes[0].add(lower_lid_mesh);
-	lower_lid_mesh.position.z = -10;
+	for (var i = 0; i < 5; i++) {
+		lower_lid_mesh = new THREE.Mesh(geometry, material_eye_lid);
+		// lower_lid_mesh.position.set(i,i,-10);
+		// lower_lid_mesh.position.x = i;
+		// lower_lid_mesh.position.y = i;
+		lower_lid_mesh.position.z = -10;
+		scenes[0].add(lower_lid_mesh);
+	}
 }
 
 function upper_lid(geometry, materials) {
+	for (var i = 0; i < 5; i++) {
 	upper_lid_mesh = new THREE.Mesh(geometry, material_eye_lid);
-	scenes[0].add(upper_lid_mesh);
+	// upper_lid_mesh.position.set(i,i,-10);
+	// upper_lid_mesh.position.x = i;
+	// upper_lid_mesh.position.y = i;
 	upper_lid_mesh.position.z = -10;
+	scenes[0].add(upper_lid_mesh);
+	}
 }
 
 function eye_ball(geometry, materials) {
+	for (var i = 0; i < 5; i++){
 	eye_ball_mesh = new THREE.Mesh(geometry, material);
-	scenes[0].add(eye_ball_mesh);
+	// eye_ball_mesh.position.set(i,i,-10);
+	eye_ball_mesh.position.x = i;
+	eye_ball_mesh.position.y = i;
 	eye_ball_mesh.position.z = -10;
+	scenes[0].add(eye_ball_mesh);
+	}
 }
 
 var upper_flag = 0;
@@ -94,5 +115,6 @@ var animate = function () {
 	renderer.render(scenes[0], camera);
 };
 
+fadePage();
 loadScene();
 animate();
