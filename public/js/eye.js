@@ -1,6 +1,6 @@
-setTimeout(function(){
+setTimeout(function () {
 	document.getElementById('myCanvas').classList.remove('hide');
- }, 5000);
+}, 2000);
 
 
 var renderer,
@@ -8,7 +8,8 @@ var renderer,
 	camera,
 	myCanvas = document.getElementById('myCanvas');
 
-var eye_ball_mesh, lower_lid_mesh, upper_lid_mesh;
+var eye_ball_mesh, lower_lid_mesh, upper_lid_mesh, loader,
+	texture, material, material_eye_lid, light, light2;
 
 //RENDERER
 renderer = new THREE.WebGLRenderer({
@@ -25,27 +26,38 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 1000);
 
 //SCENE
-scenes[0] = new THREE.Scene();
+function loadScene() {
+  scenes[0] = new THREE.Scene();
+  loadLights();
+  loadTextures();
+  loadLoader();
+}
 
+function loadLights() {
+	//LIGHTS
+	light = new THREE.AmbientLight(0xffffff, 0.5);
+	scenes[0].add(light);
 
-//LIGHTS
-var light = new THREE.AmbientLight(0xffffff, 0.5);
-scenes[0].add(light);
+	light2 = new THREE.PointLight(0xffffff, 0.5);
+	scenes[0].add(light2);
+}
 
-var light2 = new THREE.PointLight(0xffffff, 0.5);
-scenes[0].add(light2);
+function loadTextures() {
+	texture = new THREE.TextureLoader().load('/assets/neweye.jpg');
+	material = new THREE.MeshBasicMaterial({
+		map: texture
+	})
+	material_eye_lid = new THREE.MeshBasicMaterial({
+		color: 0x303030
+	});
+}
 
-var loader = new THREE.JSONLoader();
-var texture = new THREE.TextureLoader().load('/assets/neweye.jpg');
-var material = new THREE.MeshBasicMaterial({
-	map: texture
-})
-var material_eye_lid = new THREE.MeshBasicMaterial({
-	color: 0x303030
-});
-loader.load('/assets/eye_ball.json', eye_ball);
-loader.load('/assets/upper_lid.json', upper_lid);
-loader.load('/assets/lower_lid.json', lower_lid);
+function loadLoader() {
+	loader = new THREE.JSONLoader();
+	loader.load('/assets/eye_ball.json', eye_ball);
+	loader.load('/assets/upper_lid.json', upper_lid);
+	loader.load('/assets/lower_lid.json', lower_lid);
+}
 
 function lower_lid(geometry, materials) {
 	lower_lid_mesh = new THREE.Mesh(geometry, material_eye_lid);
@@ -82,4 +94,5 @@ var animate = function () {
 	renderer.render(scenes[0], camera);
 };
 
+loadScene();
 animate();
