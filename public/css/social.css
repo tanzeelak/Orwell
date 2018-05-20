@@ -55,6 +55,9 @@ body {
     border-radius: 50px;
     margin: 0 7px; }
 
+#content {
+  background: white; }
+
 #main {
   height: 100%;
   width: 100vw;
@@ -164,10 +167,8 @@ canvas {
 
 #myCanvas {
   position: absolute;
-  left: 75px;
-  top: 75px;
-  width: 300px !important;
-  height: 200px !important;
-  z-index: 2; }
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: -2; }
 
 /*# sourceMappingURL=social.css.map */
