@@ -117,18 +117,20 @@ var animate = function() {
   requestAnimationFrame(animate);
   meshes.forEach(function(mesh) {
     console.log(mesh);
+    if (mesh.name == "upper_lid") {
+      if (mesh.rotation.x < -0.04) {
+        upper_flag = 0;
+      } else if (mesh.rotation.x > 1) {
+        upper_flag = 1;
+      }
+      if (!upper_flag) {
+        mesh.rotation.x += 0.015;
+      } else {
+        mesh.rotation.x -= 0.015;
+      }
+    }
   });
-  // if (upper_lid_mesh.rotation.x < -0.04) {
-  // 	upper_flag = 0;
-  // } else if (upper_lid_mesh.rotation.x > 1) {
-  // 	upper_flag = 1;
-  // }
-  // if (!upper_flag) {
-  // 	upper_lid_mesh.rotation.x += 0.015;
-  // } else {
-  // 	upper_lid_mesh.rotation.x -= 0.015;
-  // }
-  // renderer.render(scenes[0], camera);
+  renderer.render(scenes[0], camera);
 };
 
 fadePage();
