@@ -1,13 +1,9 @@
-// setTimeout(function() {
-//   document.getElementById("myCanvas").classList.remove("hide");
-// }, 2000);
-
 s = document.getElementById("content").style;
 s.opacity = 1;
 
-function fadePage() {
+const fadePage = () => {
   (s.opacity -= 0.01) < 0 ? (s.display = "none") : setTimeout(fadePage, 40);
-}
+};
 
 var renderer,
   scenes = [],
@@ -15,9 +11,14 @@ var renderer,
   randX = [],
   randY = [],
   camera,
-  myCanvas = document.getElementById("myCanvas");
-
-var loader, texture, material, material_eye_lid, light, light2;
+  myCanvas = document.getElementById("myCanvas"),
+  loader, 
+  texture, 
+  material,
+  material_eye_lid, 
+  light,
+  light2,
+  upper_flag = 0;
 
 //RENDERER
 renderer = new THREE.WebGLRenderer({
@@ -39,24 +40,23 @@ camera = new THREE.PerspectiveCamera(
 );
 
 //SCENE
-function loadScene(callback) {
+const loadScene = callback => {
   scenes[0] = new THREE.Scene();
   loadLights();
   loadTextures();
   loadLoader(callback);
-  console.log("load scene");
-}
+};
 
-function loadLights() {
+const loadLights = () => {
   //LIGHTS
   light = new THREE.AmbientLight(0xffffff, 0.5);
   scenes[0].add(light);
 
   light2 = new THREE.PointLight(0xffffff, 0.5);
   scenes[0].add(light2);
-}
+};
 
-function loadTextures() {
+const loadTextures = () => {
   texture = new THREE.TextureLoader().load("/assets/neweye.jpg");
   material = new THREE.MeshBasicMaterial({
     map: texture
@@ -64,16 +64,16 @@ function loadTextures() {
   material_eye_lid = new THREE.MeshBasicMaterial({
     color: 0x303030
   });
-}
+};
 
-function loadLoader() {
+const loadLoader = () => {
   loader = new THREE.JSONLoader();
   loader.load("/assets/eye_ball.json", eye_ball);
   loader.load("/assets/upper_lid.json", upper_lid);
   loader.load("/assets/lower_lid.json", lower_lid);
-}
+};
 
-function lower_lid(geometry, materials) {
+const lower_lid = (geometry, materials) => {
   for (var i = 0; i < 5; i++) {
     var lower_lid_mesh = new THREE.Mesh(geometry, material_eye_lid);
     lower_lid_mesh.position.x = randX[i];
@@ -83,9 +83,9 @@ function lower_lid(geometry, materials) {
     meshes.push(lower_lid_mesh);
     scenes[0].add(lower_lid_mesh);
   }
-}
+};
 
-function upper_lid(geometry, materials) {
+const upper_lid = (geometry, materials) => {
   for (var i = 0; i < 5; i++) {
     var upper_lid_mesh = new THREE.Mesh(geometry, material_eye_lid);
     upper_lid_mesh.position.x = randX[i];
@@ -95,9 +95,9 @@ function upper_lid(geometry, materials) {
     meshes.push(upper_lid_mesh);
     scenes[0].add(upper_lid_mesh);
   }
-}
+};
 
-function eye_ball(geometry, materials) {
+const eye_ball = (geometry, materials) => {
   for (var i = 0; i < 5; i++) {
     var eye_ball_mesh = new THREE.Mesh(geometry, material);
     eye_ball_mesh.position.x = randX[i];
@@ -107,11 +107,9 @@ function eye_ball(geometry, materials) {
     meshes.push(eye_ball_mesh);
     scenes[0].add(eye_ball_mesh);
   }
-}
+};
 
-var upper_flag = 0;
-
-var animate = function() {
+const animate = () => {
   requestAnimationFrame(animate);
   meshes.forEach(function(mesh) {
     // console.log(mesh);
@@ -131,17 +129,17 @@ var animate = function() {
   renderer.render(scenes[0], camera);
 };
 
-function fillRandArrays(length, min, max) {
-  max = Math.abs(min) + max + 1
+const fillRandArrays = (length, min, max) => {
+  max = Math.abs(min) + max + 1;
   for (var i = 0; i < length; i++) {
-    randX[i] = (Math.random() * max) + min;
-    randY[i] = (Math.random() * max) + min;
+    randX[i] = Math.random() * max + min;
+    randY[i] = Math.random() * max + min;
   }
   console.log(randX);
   console.log(randY);
-}
+};
 
-fillRandArrays(3,-2, 2);
+fillRandArrays(3, -2, 2);
 fadePage();
 loadScene();
 animate();
