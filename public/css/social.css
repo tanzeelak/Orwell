@@ -55,6 +55,9 @@ body {
     border-radius: 50px;
     margin: 0 7px; }
 
+#content {
+  background: white; }
+
 #main {
   height: 100%;
   width: 100vw;
@@ -88,7 +91,7 @@ body {
 
 .advertisement-card {
   display: flex;
-  flex-direction: column;}
+  flex-direction: column; }
 
 .post-pic {
   display: inline-block;
@@ -154,5 +157,18 @@ body {
       margin: 0 7px;
       vertical-align: middle;
       float: right; }
+
+canvas {
+  width: 100%;
+  height: 100%; }
+
+.hide {
+  display: none; }
+
+#myCanvas {
+  position: absolute;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: -2; }
 
 /*# sourceMappingURL=social.css.map */

@@ -77,6 +77,9 @@ body {
 }
 
 // MAIN
+#content {
+  background: white;
+}
 #main {
   height: 100%;
   width: 100vw;
@@ -205,4 +208,22 @@ body {
     }
     margin: 10px 0;
   }
+}
+
+// EYE
+
+canvas {
+  width: 100%;
+  height: 100%
+}
+
+.hide {
+  display: none;
+}
+
+#myCanvas {
+  position: absolute;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: -2;
 }
