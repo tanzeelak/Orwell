@@ -110,7 +110,7 @@
             </div>
 
             <div class="card advertisement-card">
-              <video style="height:100px" hidden autoplay></video>
+              <video id="video" preload loop muted autoplay></video>
               <br>
               <button id="btn-stop-recording">Stop Recording</button>
             </div>
@@ -123,6 +123,8 @@
 
   </div>
 </body>
+<script type="text/javascript" src="/node_modules/tracking/build/tracking-min.js"></script>
+<script type="text/javascript" src="/node_modules/tracking/build/data/face-min.js"></script>
 <script src="../../node_modules/recordrtc/RecordRTC.min.js"></script>
 <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
 <script src="../public/js/camcord.js"></script>
