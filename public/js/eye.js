@@ -1,26 +1,6 @@
 s = document.getElementById("content").style;
 s.opacity = 1;
 
-// var s = [];
-// var all = document.getElementsByTagName("*");
-
-// for (var i = 0; i < all.length; i++) {
-//   if (all[i].id != "recording") {
-//     s.push(all[i].style);
-//   }
-// }
-
-// for (var i = 0; i < s.length; i++) {
-//   s[i].opacity = 1;
-// }
-
-// const fadePage = () => {
-//   for (var i = 0; i < s.length; s++) {
-//     console.log(s[i]);
-//     (s[i].opacity -= 0.01) < 0 ? (s[i].display = "none") : setTimeout(fadePage, 40);
-//   }
-// };
-
 const fadePage = () => {
   (s.opacity -= 0.01) < 0 ? (s.display = "block") : setTimeout(fadePage, 40);
 };
