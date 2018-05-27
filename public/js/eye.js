@@ -1,8 +1,28 @@
 s = document.getElementById("content").style;
 s.opacity = 1;
 
+// var s = [];
+// var all = document.getElementsByTagName("*");
+
+// for (var i = 0; i < all.length; i++) {
+//   if (all[i].id != "recording") {
+//     s.push(all[i].style);
+//   }
+// }
+
+// for (var i = 0; i < s.length; i++) {
+//   s[i].opacity = 1;
+// }
+
+// const fadePage = () => {
+//   for (var i = 0; i < s.length; s++) {
+//     console.log(s[i]);
+//     (s[i].opacity -= 0.01) < 0 ? (s[i].display = "none") : setTimeout(fadePage, 40);
+//   }
+// };
+
 const fadePage = () => {
-  (s.opacity -= 0.01) < 0 ? (s.display = "none") : setTimeout(fadePage, 40);
+  (s.opacity -= 0.01) < 0 ? (s.display = "block") : setTimeout(fadePage, 40);
 };
 
 var renderer,
@@ -56,6 +76,7 @@ const loadScene = callback => {
   loadLights();
   loadTextures();
   loadLoader(callback);
+  setTimeout(callback, 10000);
 };
 
 const loadLights = () => {
@@ -136,8 +157,8 @@ const animate = () => {
       }
     }
     if (mesh.name == "eye_ball") {
-      mesh.rotation.y = -(((faceX - (videoX/2))/(videoX/2)) * maxXRot);
-      mesh.rotation.x = -(((faceY - (videoY/2))/(videoY/2)) * maxYRot);
+      mesh.rotation.y = -(((faceX - ((videoX+100)/2))/((videoX+100)/2)) * maxXRot);
+      //mesh.rotation.x = -(((faceY - (videoY/2))/(videoY/2)) * maxYRot);
     }
   });
   renderer.render(scenes[0], camera);
@@ -152,6 +173,7 @@ const fillRandArrays = (length, min, max) => {
   console.log(randX);
   console.log(randY);
 };
+
 trackingInit();
 fillRandArrays(3, -2, 2);
 fadePage();
