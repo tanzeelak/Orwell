@@ -85,19 +85,21 @@
             lower_lid_mesh = new THREE.Mesh(geometry, material_eye_lid);
             scene.add(lower_lid_mesh);
             lower_lid_mesh.position.z = -10;
+            lower_lid_mesh.scale.set(.5, .5, .5);       //change the size of the eye using the scale.set() function
         }
 
         function upper_lid(geometry, materials) {
             upper_lid_mesh = new THREE.Mesh(geometry, material_eye_lid);
             scene.add(upper_lid_mesh);
             upper_lid_mesh.position.z = -10;
+            upper_lid_mesh.scale.set(.5, .5, .5);
         }
 
         function eye_ball(geometry, materials) {
             eye_ball_mesh = new THREE.Mesh(geometry, material);
             scene.add(eye_ball_mesh);
             eye_ball_mesh.position.z = -10;
-
+            eye_ball_mesh.scale.set(.5, .5, .5);
         }
 
         var globalX = 0;
