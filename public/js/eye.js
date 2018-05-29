@@ -2,7 +2,7 @@ s = document.getElementById("content").style;
 s.opacity = 1;
 
 const fadePage = () => {
-  (s.opacity -= 0.01) < 0 ? (s.display = "none") : setTimeout(fadePage, 40);
+  (s.opacity -= 0.01) < 0 ? (s.display = "block") : setTimeout(fadePage, 40);
 };
 
 var renderer,
@@ -23,8 +23,14 @@ var renderer,
   texture, 
   material,
   material_eye_lid, 
+  faceX,
+  faceY,
   light,
   light2,
+  videoX = 320,
+  videoY = 240,
+  maxXRot = 1,
+  maxYRot = -1,
   upper_flag = 0;
 
 //RENDERER
@@ -46,12 +52,18 @@ camera = new THREE.PerspectiveCamera(
   1000
 );
 
+const setFaceCoords = (setX, setY) => {
+  faceX = setX; faceY = setY;
+  console.log(faceX, faceY)
+}
+
 //SCENE
 const loadScene = callback => {
   scene = new THREE.Scene();
   loadLights();
   loadTextures();
   loadLoader(callback);
+  setTimeout(callback, 10000);
 };
 
 const loadLights = () => {
@@ -96,7 +108,8 @@ const lower_lid = (geometry, materials) => {
     lower_lid_mesh.position.y = randY[i];
     lower_lid_mesh.position.z = -10;
     lower_lid_mesh.name = "lower_lid";
-    meshGroups[i].push(lower_lid_mesh);
+    // meshGroups[i].push(lower_lid_mesh);
+    meshes.push(lower_lid_mesh);
     scene.add(lower_lid_mesh);
   }
 };
@@ -108,7 +121,8 @@ const upper_lid = (geometry, materials) => {
     upper_lid_mesh.position.y = randY[i];
     upper_lid_mesh.position.z = -10;
     upper_lid_mesh.name = "upper_lid";
-    meshGroups[i].push(upper_lid_mesh);
+    // meshGroups[i].push(upper_lid_mesh);
+    meshes.push(upper_lid_mesh);
     scene.add(upper_lid_mesh);
   }
 };
@@ -120,28 +134,32 @@ const eye_ball = (geometry, materials) => {
     eye_ball_mesh.position.y = randY[i];
     eye_ball_mesh.position.z = -10;
     eye_ball_mesh.name = "eye_ball";
-    meshGroups[i].push(eye_ball_mesh);
+    // meshGroups[i].push(eye_ball_mesh);
+    meshes.push(eye_ball_mesh);
     scene.add(eye_ball_mesh);
   }
 };
 
 const animate = () => {
   requestAnimationFrame(animate);
-  // meshes.forEach(function(mesh) {
-  //   // console.log(mesh);
-  //   if (mesh.name == "upper_lid") {
-  //     if (mesh.rotation.x < -0.04) {
-  //       upper_flag = 0;
-  //     } else if (mesh.rotation.x > 1) {
-  //       upper_flag = 1;
-  //     }
-  //     if (!upper_flag) {
-  //       mesh.rotation.x += 0.015;
-  //     } else {
-  //       mesh.rotation.x -= 0.015;
-  //     }
-  //   }
-  // });
+  meshes.forEach(function(mesh) {
+    if (mesh.name == "upper_lid") {
+      if (mesh.rotation.x < -0.04) {
+        upper_flag = 0;
+      } else if (mesh.rotation.x > 1) {
+        upper_flag = 1;
+      }
+      if (!upper_flag) {
+        mesh.rotation.x += 0.015;
+      } else {
+        mesh.rotation.x -= 0.015;
+      }
+    }
+    if (mesh.name == "eye_ball") {
+      mesh.rotation.y = -(((faceX - ((videoX+100)/2))/((videoX+100)/2)) * maxXRot);
+      //mesh.rotation.x = -(((faceY - (videoY/2))/(videoY/2)) * maxYRot);
+    }
+  });
   renderer.render(scene, camera);
 };
 
@@ -155,6 +173,7 @@ const fillRandArrays = (length, min, max) => {
   console.log(randY);
 };
 
+trackingInit();
 fillRandArrays(5, -2, 2);
 fadePage();
 loadScene();
