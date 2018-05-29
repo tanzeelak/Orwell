@@ -12,10 +12,10 @@ var renderer,
   randY = [],
   camera,
   myCanvas = document.getElementById("myCanvas"),
-  loader, 
-  texture, 
+  loader,
+  texture,
   material,
-  material_eye_lid, 
+  material_eye_lid,
   faceX,
   faceY,
   light,
@@ -156,6 +156,6 @@ const fillRandArrays = (length, min, max) => {
 
 trackingInit();
 fillRandArrays(3, -2, 2);
-fadePage();
+setTimeout(fadePage, 7000);
 loadScene();
 animate();
