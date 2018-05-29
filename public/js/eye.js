@@ -5,7 +5,7 @@ const fadePage = () => {
   (s.opacity -= 0.01) < 0 ? (s.display = "block") : setTimeout(fadePage, 40);
 };
 
-var renderer,
+let renderer,
   scene,
   meshes = [],
   meshGroups = [
@@ -102,8 +102,8 @@ const loadLoader = () => {
 };
 
 const lower_lid = (geometry, materials) => {
-  for (var i = 0; i < 5; i++) {
-    var lower_lid_mesh = new THREE.Mesh(geometry, material_eye_lid);
+  for (let i = 0; i < 5; i++) {
+    let lower_lid_mesh = new THREE.Mesh(geometry, material_eye_lid);
     lower_lid_mesh.position.x = randX[i];
     lower_lid_mesh.position.y = randY[i];
     lower_lid_mesh.position.z = -10;
@@ -115,8 +115,8 @@ const lower_lid = (geometry, materials) => {
 };
 
 const upper_lid = (geometry, materials) => {
-  for (var i = 0; i < 5; i++) {
-    var upper_lid_mesh = new THREE.Mesh(geometry, material_eye_lid);
+  for (let i = 0; i < 5; i++) {
+    let upper_lid_mesh = new THREE.Mesh(geometry, material_eye_lid);
     upper_lid_mesh.position.x = randX[i];
     upper_lid_mesh.position.y = randY[i];
     upper_lid_mesh.position.z = -10;
@@ -128,8 +128,8 @@ const upper_lid = (geometry, materials) => {
 };
 
 const eye_ball = (geometry, materials) => {
-  for (var i = 0; i < 5; i++) {
-    var eye_ball_mesh = new THREE.Mesh(geometry, material);
+  for (let i = 0; i < 5; i++) {
+    let eye_ball_mesh = new THREE.Mesh(geometry, material);
     eye_ball_mesh.position.x = randX[i];
     eye_ball_mesh.position.y = randY[i];
     eye_ball_mesh.position.z = -10;
@@ -165,7 +165,7 @@ const animate = () => {
 
 const fillRandArrays = (length, min, max) => {
   max = Math.abs(min) + max + 1;
-  for (var i = 0; i < length; i++) {
+  for (let i = 0; i < length; i++) {
     randX[i] = Math.random() * max + min;
     randY[i] = Math.random() * max + min;
   }
