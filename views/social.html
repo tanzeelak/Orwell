@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,35 +10,39 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   <title>Orwell</title>
 </head>
+
 <body>
-  <header id="header">
+  <canvas id="myCanvas" class="eye-canvas"></canvas>
 
-    <div class="inline-wrapper">
-      <div class="header-logo">
-        <span class="header-logo-text">orwell</span>
+  <div id="content">
+    <header id="header">
+
+      <div class="inline-wrapper">
+        <div class="header-logo">
+          <span class="header-logo-text">orwell</span>
+        </div>
       </div>
-    </div>
 
-    <div class="inline-wrapper" id="header-menu-wrapper">
-      <div class="header-menu">
-        <div class="header-menu-icon"><i class="far fa-comment"></i></div>
-        <div class="header-menu-icon"><i class="far fa-edit"></i></i></div>
+      <div class="inline-wrapper" id="header-menu-wrapper">
+        <div class="header-menu">
+          <div class="header-menu-icon"><i class="far fa-comment"></i></div>
+          <div class="header-menu-icon"><i class="far fa-edit"></i></i></div>
+        </div>
       </div>
-    </div>
 
-    <div class="inline-wrapper" id="header-search-wrapper">
-      <div class="header-search">
-        <input type="text" name="search-bar" placeholder="search">
+      <div class="inline-wrapper" id="header-search-wrapper">
+        <div class="header-search">
+          <input type="text" name="search-bar" placeholder="search">
+        </div>
       </div>
-    </div>
 
-  </header>
+    </header>
 
-  <div id="main">
-    <div id="main-wrapper">
-      <div id="main-content">
+    <div id="main">
+      <div id="main-wrapper">
+        <div id="main-content">
 
-        <div class="content-left">
+          <div class="content-left">
 
           <div class="card post-card">
             <div class="post-header">
@@ -103,8 +108,9 @@
               <div class="post-caption-wrapper">
                   <p class="post-caption">This defines the ability for a flex item to grow if necessary. It accepts a unitless value that serves as a proportion. It dictates what amount of the available space inside the flex container the item should take up. </p>
               </div>
-              <div class="post-picture-single">
+                <div class="post-picture-single">
                   <img src="https://img1.cgtrader.com/items/175667/2975b0ecc5/eyeball-3d-model-low-poly-obj-fbx-ma-mb.png" alt="post-picture">
+                </div>
               </div>
             </div>
             <div class="post-react">
@@ -116,7 +122,6 @@
             <div class="post-comment">
                 <textarea class="post-comment-textarea" name="comment" rows="3" placeholder="Leave a comment..."></textarea>
             </div>
-          </div>
 
           <div class="card post-card">
             <div class="post-header">
@@ -199,9 +204,15 @@
           </div>
 
         </div>
-
       </div>
     </div>
+
   </div>
 </body>
+<script src="../../node_modules/recordrtc/RecordRTC.min.js"></script>
+<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+<script src="../public/js/camcord.js"></script>
+<script src="/node_modules/three/build/three.min.js"></script>
+<script src="/public/js/eye.js"></script>
+
 </html>

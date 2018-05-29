@@ -63,6 +63,9 @@ p {
     color: white;
     padding: 0 10px; }
 
+#content {
+  background: white; }
+
 #main {
   height: 100%;
   width: 100vw;
@@ -96,7 +99,8 @@ p {
   background-color: white; }
 
 .advertisement-card {
-  height: 30vh; }
+  display: flex;
+  flex-direction: column; }
 
 .post-pic {
   display: inline-block;
@@ -174,5 +178,18 @@ p {
       display: inline-block;
       vertical-align: middle;
       float: right; }
+
+canvas {
+  width: 100%;
+  height: 100%; }
+
+.hide {
+  display: none; }
+
+#myCanvas {
+  position: absolute;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: -2; }
 
 /*# sourceMappingURL=social.css.map */
