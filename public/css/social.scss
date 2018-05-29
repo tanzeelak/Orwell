@@ -92,7 +92,7 @@ p {
 }
 
 // MAIN
-#content {
+#social-media-page {
   background: white;
 }
 #main {
@@ -257,4 +257,29 @@ canvas {
   width: 100vw !important;
   height: 100vh !important;
   z-index: -2;
+}
+
+// WHOS WATCHING
+#whos-watching {
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  color: white;
+
+  #prompt {
+    margin: 0;
+  }
+
+  #prompt-input {
+    background-color: black;
+    border: none;
+    border-bottom: solid 2px white;
+    width: 500px;
+  }
+
+  #prompt-submit {
+    background-color: black;
+    border: none;
+    color: white;
+  }
 }

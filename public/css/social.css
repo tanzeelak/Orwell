@@ -63,7 +63,7 @@ p {
     color: white;
     padding: 0 10px; }
 
-#content {
+#social-media-page {
   background: white; }
 
 #main {
@@ -191,5 +191,22 @@ canvas {
   width: 100vw !important;
   height: 100vh !important;
   z-index: -2; }
+
+#whos-watching {
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  color: white; }
+  #whos-watching #prompt {
+    margin: 0; }
+  #whos-watching #prompt-input {
+    background-color: black;
+    border: none;
+    border-bottom: solid 2px white;
+    width: 500px; }
+  #whos-watching #prompt-submit {
+    background-color: black;
+    border: none;
+    color: white; }
 
 /*# sourceMappingURL=social.css.map */
