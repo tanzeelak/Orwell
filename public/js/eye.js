@@ -1,4 +1,4 @@
-s = document.getElementById("content").style;
+s = document.getElementById("social-media-page").style;
 s.opacity = 1;
 
 const fadePage = () => {
@@ -12,10 +12,10 @@ var renderer,
   randY = [],
   camera,
   myCanvas = document.getElementById("myCanvas"),
-  loader, 
-  texture, 
+  loader,
+  texture,
   material,
-  material_eye_lid, 
+  material_eye_lid,
   light,
   light2,
   upper_flag = 0;
