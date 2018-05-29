@@ -6,8 +6,15 @@ const fadePage = () => {
 };
 
 var renderer,
-  scenes = [],
+  scene,
   meshes = [],
+  meshGroups = [
+    [],
+    [],
+    [],
+    [],
+    []
+  ],
   randX = [],
   randY = [],
   camera,
@@ -41,7 +48,7 @@ camera = new THREE.PerspectiveCamera(
 
 //SCENE
 const loadScene = callback => {
-  scenes[0] = new THREE.Scene();
+  scene = new THREE.Scene();
   loadLights();
   loadTextures();
   loadLoader(callback);
@@ -50,10 +57,10 @@ const loadScene = callback => {
 const loadLights = () => {
   //LIGHTS
   light = new THREE.AmbientLight(0xffffff, 0.5);
-  scenes[0].add(light);
+  scene.add(light);
 
   light2 = new THREE.PointLight(0xffffff, 0.5);
-  scenes[0].add(light2);
+  scene.add(light2);
 };
 
 const loadTextures = () => {
@@ -71,6 +78,15 @@ const loadLoader = () => {
   loader.load("/assets/eye_ball.json", eye_ball);
   loader.load("/assets/upper_lid.json", upper_lid);
   loader.load("/assets/lower_lid.json", lower_lid);
+
+  // for (var i = 0; i < meshGroups.length; i++) {
+  //   var group = new THREE.Group();
+  //   meshGroups[i].forEach(function (mesh) {
+  //     group.add(mesh);
+  //   });
+  //   console.log(group);
+  //   scene.add(group);
+  // }
 };
 
 const lower_lid = (geometry, materials) => {
@@ -80,8 +96,8 @@ const lower_lid = (geometry, materials) => {
     lower_lid_mesh.position.y = randY[i];
     lower_lid_mesh.position.z = -10;
     lower_lid_mesh.name = "lower_lid";
-    meshes.push(lower_lid_mesh);
-    scenes[0].add(lower_lid_mesh);
+    meshGroups[i].push(lower_lid_mesh);
+    scene.add(lower_lid_mesh);
   }
 };
 
@@ -92,8 +108,8 @@ const upper_lid = (geometry, materials) => {
     upper_lid_mesh.position.y = randY[i];
     upper_lid_mesh.position.z = -10;
     upper_lid_mesh.name = "upper_lid";
-    meshes.push(upper_lid_mesh);
-    scenes[0].add(upper_lid_mesh);
+    meshGroups[i].push(upper_lid_mesh);
+    scene.add(upper_lid_mesh);
   }
 };
 
@@ -104,29 +120,29 @@ const eye_ball = (geometry, materials) => {
     eye_ball_mesh.position.y = randY[i];
     eye_ball_mesh.position.z = -10;
     eye_ball_mesh.name = "eye_ball";
-    meshes.push(eye_ball_mesh);
-    scenes[0].add(eye_ball_mesh);
+    meshGroups[i].push(eye_ball_mesh);
+    scene.add(eye_ball_mesh);
   }
 };
 
 const animate = () => {
   requestAnimationFrame(animate);
-  meshes.forEach(function(mesh) {
-    // console.log(mesh);
-    if (mesh.name == "upper_lid") {
-      if (mesh.rotation.x < -0.04) {
-        upper_flag = 0;
-      } else if (mesh.rotation.x > 1) {
-        upper_flag = 1;
-      }
-      if (!upper_flag) {
-        mesh.rotation.x += 0.015;
-      } else {
-        mesh.rotation.x -= 0.015;
-      }
-    }
-  });
-  renderer.render(scenes[0], camera);
+  // meshes.forEach(function(mesh) {
+  //   // console.log(mesh);
+  //   if (mesh.name == "upper_lid") {
+  //     if (mesh.rotation.x < -0.04) {
+  //       upper_flag = 0;
+  //     } else if (mesh.rotation.x > 1) {
+  //       upper_flag = 1;
+  //     }
+  //     if (!upper_flag) {
+  //       mesh.rotation.x += 0.015;
+  //     } else {
+  //       mesh.rotation.x -= 0.015;
+  //     }
+  //   }
+  // });
+  renderer.render(scene, camera);
 };
 
 const fillRandArrays = (length, min, max) => {
@@ -139,7 +155,7 @@ const fillRandArrays = (length, min, max) => {
   console.log(randY);
 };
 
-fillRandArrays(3, -2, 2);
+fillRandArrays(5, -2, 2);
 fadePage();
 loadScene();
 animate();
