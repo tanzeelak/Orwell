@@ -1,5 +1,6 @@
 $orwell-blue: #7A86CC;
 $orwell-lightblue: #D6DEEA;
+$orwell-lightgrey: #ececec;
 
 // GLOBAL CSS
 body {
@@ -14,6 +15,7 @@ body {
 .subtitle {
   font-size: 16px;
   color: grey;
+  margin-bottom: 20px;
 }
 
 p {
@@ -46,8 +48,8 @@ p {
 
     .header-logo-image {
       display: inline-block;
-      height: 30px;
-      width: 30px;
+      font-size: 2em;
+      color: white;
     }
 
   }
@@ -97,7 +99,7 @@ p {
   background-color: $orwell-lightblue;
 
   #main-wrapper {
-    padding: 2% 7%;
+    padding: 2% 10%;
 
     #main-content {
       width: 100%;
@@ -110,7 +112,7 @@ p {
         flex-direction: column;
         flex-grow: 1.5;
         height: 100%;
-        margin-right: 30px;
+        margin-right: 20px;
         max-width: 60%;
       }
 
@@ -128,7 +130,7 @@ p {
 
 .card {
   padding: 30px 40px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   border-radius: 10px;
   background-color: white;
 }
@@ -148,7 +150,7 @@ p {
 
 .post-name {
   display: inline-block;
-  font-size: 20px;
+  font-size: 18px;
   vertical-align: middle;
   margin: 0 5px;
 }
@@ -196,8 +198,8 @@ p {
 .post-comment textarea {
   width: 100%;
   resize: none;
-  background-color: $orwell-lightblue;
   border: none;
+  background-color: $orwell-lightgrey;
   border-radius: 5px;
   padding: 10px;
   font-family: 'Open Sans', sans-serif;
@@ -205,28 +207,20 @@ p {
 }
 
 // TRENDING CARD
-.most-trending-picture {
-  text-align: center;
-  img {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-  }
-}
 
 .trending-persons-card {
-  margin-top: 20px;
-  margin-bottom: 0;
   background-color: white;
-  padding: 15px;
+  padding: 20px 40px;
   line-height: 20px;
 
   .trending-person {
     img {
       display: inline-block;
-      width: 20px;
-      height: 20px;
+      width: 25px;
+      height: 25px;
       vertical-align: middle;
+      border-radius: 20px;
+      margin-right: 5px;
     }
     p {
       display: inline-block;

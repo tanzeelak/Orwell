@@ -7,7 +7,8 @@ body {
 
 .subtitle {
   font-size: 16px;
-  color: grey; }
+  color: grey;
+  margin-bottom: 20px; }
 
 p {
   font-size: 14px; }
@@ -33,8 +34,8 @@ p {
       vertical-align: middle; }
     #header .header-logo .header-logo-image {
       display: inline-block;
-      height: 30px;
-      width: 30px; }
+      font-size: 2em;
+      color: white; }
 
 #header-search-wrapper {
   float: right; }
@@ -68,7 +69,7 @@ p {
   padding-top: 70px;
   background-color: #D6DEEA; }
   #main #main-wrapper {
-    padding: 2% 7%; }
+    padding: 2% 10%; }
     #main #main-wrapper #main-content {
       width: 100%;
       height: 100%;
@@ -79,7 +80,7 @@ p {
         flex-direction: column;
         flex-grow: 1.5;
         height: 100%;
-        margin-right: 30px;
+        margin-right: 20px;
         max-width: 60%; }
       #main #main-wrapper #main-content .content-right {
         display: flex;
@@ -90,7 +91,7 @@ p {
 
 .card {
   padding: 30px 40px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   border-radius: 10px;
   background-color: white; }
 
@@ -106,7 +107,7 @@ p {
 
 .post-name {
   display: inline-block;
-  font-size: 20px;
+  font-size: 18px;
   vertical-align: middle;
   margin: 0 5px; }
 
@@ -144,33 +145,26 @@ p {
 .post-comment textarea {
   width: 100%;
   resize: none;
-  background-color: #D6DEEA;
   border: none;
+  background-color: #ececec;
   border-radius: 5px;
   padding: 10px;
   font-family: 'Open Sans', sans-serif;
   box-sizing: border-box; }
 
-.most-trending-picture {
-  text-align: center; }
-  .most-trending-picture img {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%; }
-
 .trending-persons-card {
-  margin-top: 20px;
-  margin-bottom: 0;
   background-color: white;
-  padding: 15px;
+  padding: 20px 40px;
   line-height: 20px; }
   .trending-persons-card .trending-person {
     margin: 10px 0; }
     .trending-persons-card .trending-person img {
       display: inline-block;
-      width: 20px;
-      height: 20px;
-      vertical-align: middle; }
+      width: 25px;
+      height: 25px;
+      vertical-align: middle;
+      border-radius: 20px;
+      margin-right: 5px; }
     .trending-persons-card .trending-person p {
       display: inline-block;
       margin: 0; }
