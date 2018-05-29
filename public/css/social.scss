@@ -1,7 +1,10 @@
+$orwell-blue: #7A86CC;
+$orwell-lightblue: #D6DEEA;
+
 // GLOBAL CSS
 body {
   margin: 0;
-  font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .inline-wrapper {
@@ -10,11 +13,16 @@ body {
 
 .subtitle {
   font-size: 16px;
+  color: grey;
+}
+
+p {
+  font-size: 14px;
 }
 
 // HEADER
 #header {
-  background-color: grey;
+  background-color: $orwell-blue;
   height: 70px;
   width: 100%;
   position: fixed;
@@ -31,7 +39,7 @@ body {
 
     .header-logo-text {
       color: white;
-      font-size: 30px;
+      font-size: 24px;
       padding-left: 10px;
       vertical-align: middle;
     }
@@ -51,7 +59,14 @@ body {
   .header-search {
     line-height: 70px;
     vertical-align: middle;
-    margin: 0 25px;
+    margin: 0 15px;
+
+    input {
+      border-radius: 10px;
+      border: none;
+      width: 250px;
+      padding: 5px 10px;
+    }
   }
 }
 
@@ -68,11 +83,9 @@ body {
   }
 
   .header-menu-icon {
-    height: 20px;
-    width: 20px;
-    background-color: lightgrey;
-    border-radius: 50px;
-    margin: 0 7px;
+    font-size: 1.5em;
+    color: white;
+    padding: 0 10px;
   }
 }
 
@@ -81,6 +94,7 @@ body {
   height: 100%;
   width: 100vw;
   padding-top: 70px;
+  background-color: $orwell-lightblue;
 
   #main-wrapper {
     padding: 2% 7%;
@@ -113,10 +127,10 @@ body {
 }
 
 .card {
-  padding: 25px 40px;
+  padding: 30px 40px;
   margin-bottom: 30px;
   border-radius: 10px;
-  background-color: lightgrey;
+  background-color: white;
 }
 
 .advertisement-card {
@@ -136,33 +150,58 @@ body {
   display: inline-block;
   font-size: 20px;
   vertical-align: middle;
-  margin: 0;
+  margin: 0 5px;
 }
 
 .post-picture-single img {
   width: 100%;
 }
 
-.post-react {
+.post-picture-gallery {
   display: flex;
   flex-direction: row;
+  width: 100%;
+  .post-picture-gallery-left {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-right: 10px;
+  }
+  .post-picture-gallery-right {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+  }
+  img {
+    width: 100%;
+    &:first-child {
+      margin-bottom: 10px;
+    }
+  }
 }
 
 .post-react {
   margin: 15px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 
   .post-react-icon {
-    height: 30px;
-    width: 30px;
-    background-color: darkgrey;
-    border-radius: 50px;
-    margin: 0 7px;
+    color: $orwell-blue;
+    font-size: 1.5em;
+    margin: 0 10px;
   }
 }
 
 .post-comment textarea {
   width: 100%;
   resize: none;
+  background-color: $orwell-lightblue;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-family: 'Open Sans', sans-serif;
+  box-sizing: border-box;
 }
 
 // TRENDING CARD
@@ -180,6 +219,7 @@ body {
   margin-bottom: 0;
   background-color: white;
   padding: 15px;
+  line-height: 20px;
 
   .trending-person {
     img {
@@ -193,12 +233,9 @@ body {
       margin: 0;
     }
     .add-person-icon {
+      color: $orwell-blue;
+      font-size: 1.5em;
       display: inline-block;
-      height: 20px;
-      width: 20px;
-      background-color: darkgrey;
-      border-radius: 50px;
-      margin: 0 7px;
       vertical-align: middle;
       float: right;
     }
