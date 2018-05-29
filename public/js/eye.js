@@ -1,4 +1,4 @@
-s = document.getElementById("content").style;
+s = document.getElementById("social-media-page").style;
 s.opacity = 1;
 
 const fadePage = () => {
