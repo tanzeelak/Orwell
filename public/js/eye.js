@@ -90,10 +90,10 @@ const lower_lid = (geometry, materials) => {
     var lower_lid_mesh = new THREE.Mesh(geometry, material_eye_lid);
     lower_lid_mesh.position.x = randX[i];
     lower_lid_mesh.position.y = randY[i];
-    if (i <= 20) {
-      lower_lid_mesh.position.z = -10;
+    if (i < 15) {
+      lower_lid_mesh.position.z = -15;
     }
-    else if (i <= 40) {
+    else if (i < 40) {
       lower_lid_mesh.position.z = -30;
     }
     else if (i < 60) {
@@ -110,10 +110,10 @@ const upper_lid = (geometry, materials) => {
     var upper_lid_mesh = new THREE.Mesh(geometry, material_eye_lid);
     upper_lid_mesh.position.x = randX[i];
     upper_lid_mesh.position.y = randY[i];
-    if (i <= 20) {
-      upper_lid_mesh.position.z = -10;
+    if (i < 20) {
+      upper_lid_mesh.position.z = -15;
     }
-    else if (i <= 40) {
+    else if (i < 40) {
       upper_lid_mesh.position.z = -30;
     }
     else if (i < 60) {
@@ -130,10 +130,10 @@ const eye_ball = (geometry, materials) => {
     var eye_ball_mesh = new THREE.Mesh(geometry, material);
     eye_ball_mesh.position.x = randX[i];
     eye_ball_mesh.position.y = randY[i];
-    if (i <= 20) {
-      eye_ball_mesh.position.z = -10;
+    if (i < 15) {
+      eye_ball_mesh.position.z = -15;
     }
-    else if (i <= 40) {
+    else if (i < 40) {
       eye_ball_mesh.position.z = -30;
     }
     else if (i < 60) {
@@ -168,18 +168,28 @@ const animate = () => {
   renderer.render(scenes[0], camera);
 };
 
-const fillRandArrays = (length, min, max) => {
-  max = Math.abs(min) + max + 1;
-  for (var i = 0; i < length; i++) {
-    randX[i] = Math.random() * max + min;
-    randY[i] = Math.random() * max + min;
+const fillRandArrays = () => {
+  for (var i = 0; i < 15; i++) {
+    randX[i] = (Math.random() - 0.5) * 20;
+    randY[i] = (Math.random() - 0.5) * 20;
   }
+
+  for (var i = 20; i < 40; i++) {
+    randX[i] = (Math.random() - 0.5) * 40;
+    randY[i] = (Math.random() - 0.5) * 40;
+  }
+
+  for (var i = 40; i < 60; i++) {
+    randX[i] = (Math.random() - 0.5) * 50;
+    randY[i] = (Math.random() - 0.5) * 50;
+  }
+
   console.log(randX);
   console.log(randY);
 };
 
 trackingInit();
-fillRandArrays(60, -10, 10);
+fillRandArrays();
 setTimeout(fadePage, 7000);
 setTimeout(loadScene, 13000);
 animate();
