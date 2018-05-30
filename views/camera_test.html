@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>HELLO</title>
 </head>
-<body><div id="container"></div>
+
+<body>
+    <div id="container"></div>
 </body>
 <script src="/node_modules/three/build/three.min.js"></script>
 <script>
@@ -39,7 +42,7 @@
         createSpace();
 
 
-        document.addEventListener('click', onMouseClick, false);
+        //document.addEventListener('click', onMouseClick, false);
         //document.addEventListener('mousemove', onMouseMove, false);
         window.addEventListener('resize', onWindowResize, false);
         renderer.render(scene, camera);
@@ -132,10 +135,12 @@
         camera.updateProjectionMatrix();
     };
 
-    function onMouseClick(event) {
-        camera.translateZ(-100);
-        // console.log("hello")
-    }
+
+    /*function onMouseClick(event) {
+            camera.translateZ(-100);
+            // console.log("hello")
+        }
+     */
     /*function onMouseMove(event) {
         mouseX = event.clientX - window.innerWidth / 2;
         mouseY = event.clientY - window.innerHeight / 2;
@@ -155,6 +160,35 @@
 
     init();
     animate();
+
+        //MOVING EYE STUFF WE ADDED THIS :-)
+
+    var velocity = new THREE.Vector3();
+    var prevTime = performance.now();
+
+    var timedEye = setInterval(moveCamera, 0)
+    function moveCamera() {
+        //camera.translateZ(-100);
+        //console.log("hello");
+        var time = performance.now();
+        var delta = (time - prevTime) / 1000;
+
+        //reset z velocity to be 0 always. But override it if user presses up or w. See next line...      
+        velocity.z -= velocity.z * 10.0 * delta;
+        //if the user pressed 'up' or 'w', set velocity.z to a value > 0.  
+        velocity.z -= 1000.0 * delta;
+
+        //pass velocity as an argument to translateZ and call it on camera.
+        camera.translateZ(velocity.z * delta);
+
+        prevTime = time;
+    }
+
+    setTimeout(stopCamera, 10000);
+
+    function stopCamera() {
+        window.clearInterval(timedEye);
+    }
 
 
 </script>
