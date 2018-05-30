@@ -2,7 +2,7 @@ s = document.getElementById("social-media-page").style;
 s.opacity = 1;
 
 const fadePage = () => {
-  (s.opacity -= 0.01) < 0 ? (s.display = "none") : setTimeout(fadePage, 40);
+  (s.opacity -= 0.01) < 0 ? (s.display = "block") : setTimeout(fadePage, 40);
 };
 
 var renderer,
@@ -16,8 +16,14 @@ var renderer,
   texture,
   material,
   material_eye_lid,
+  faceX,
+  faceY,
   light,
   light2,
+  videoX = 320,
+  videoY = 240,
+  maxXRot = 1,
+  maxYRot = -1,
   upper_flag = 0;
 
 //RENDERER
@@ -39,12 +45,18 @@ camera = new THREE.PerspectiveCamera(
   1000
 );
 
+const setFaceCoords = (setX, setY) => {
+  faceX = setX; faceY = setY;
+  console.log(faceX, faceY)
+}
+
 //SCENE
 const loadScene = callback => {
   scenes[0] = new THREE.Scene();
   loadLights();
   loadTextures();
   loadLoader(callback);
+  setTimeout(callback, 10000);
 };
 
 const loadLights = () => {
@@ -112,7 +124,6 @@ const eye_ball = (geometry, materials) => {
 const animate = () => {
   requestAnimationFrame(animate);
   meshes.forEach(function(mesh) {
-    // console.log(mesh);
     if (mesh.name == "upper_lid") {
       if (mesh.rotation.x < -0.04) {
         upper_flag = 0;
@@ -124,6 +135,10 @@ const animate = () => {
       } else {
         mesh.rotation.x -= 0.015;
       }
+    }
+    if (mesh.name == "eye_ball") {
+      mesh.rotation.y = -(((faceX - ((videoX+100)/2))/((videoX+100)/2)) * maxXRot);
+      //mesh.rotation.x = -(((faceY - (videoY/2))/(videoY/2)) * maxYRot);
     }
   });
   renderer.render(scenes[0], camera);
@@ -139,7 +154,8 @@ const fillRandArrays = (length, min, max) => {
   console.log(randY);
 };
 
+trackingInit();
 fillRandArrays(3, -2, 2);
-fadePage();
+setTimeout(fadePage, 7000);
 loadScene();
 animate();

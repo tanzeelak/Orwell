@@ -1,4 +1,17 @@
 var video = document.querySelector('video');
+function trackingInit(){
+	var tracker = new tracking.ObjectTracker('face');
+	tracker.setInitialScale(4);
+    tracker.setStepSize(2);
+    tracker.setEdgesDensity(0.1);
+    tracking.track(video, tracker, { camera: true });
+    console.log(video);
+    tracker.on("track", function(event) {
+        event.data.forEach(function(rect) {
+            setFaceCoords(rect.x + (rect.width/2), rect.y + (rect.height/2));
+        });
+    });
+}
 
 function captureCamera(callback) {
     navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(function(camera) {
