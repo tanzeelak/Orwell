@@ -9,13 +9,14 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
     crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700" rel="stylesheet">
   <title>Orwell</title>
 </head>
 
 <body>
   <canvas id="myCanvas" class="eye-canvas"></canvas>
 
-  <div id="social-media-page">
+  <div id="social-media-page" class="hide">
     <header id="header">
 
       <div class="inline-wrapper">
@@ -49,38 +50,6 @@
         <div id="main-content">
 
           <div class="content-left">
-
-            <div class="card post-card">
-              <div class="post-header">
-                <img class="post-pic" src="../public/img/gabby-profile.jpg" alt="profile-picture">
-                <h1 class="post-name">Gabby Morales</h1>
-              </div>
-              <div class="post-content">
-                <div class="post-caption-wrapper">
-                  <p class="post-caption">Had a blast at the concert tonight!!!</p>
-                </div>
-                <div class="post-picture-single">
-                  <img src="../public/img/gabby.jpg" alt="post-picture">
-                </div>
-              </div>
-              <div class="post-react">
-                <div class="post-react-icon">
-                  <i class="far fa-heart"></i>
-                </div>
-                <div>
-                  <p>23 likes</p>
-                </div>
-                <div class="post-react-icon">
-                  <i class="far fa-comment"></i>
-                </div>
-                <div>
-                  <p>6 comments</p>
-                </div>
-              </div>
-              <div class="post-comment">
-                <textarea class="post-comment-textarea" name="comment" rows="3" placeholder="Leave a comment..."></textarea>
-              </div>
-            </div>
 
             <div class="card post-card">
               <div class="post-header">
@@ -125,76 +94,6 @@
 
             <div class="card post-card">
               <div class="post-header">
-                <img class="post-pic" src="https://img1.cgtrader.com/items/175667/2975b0ecc5/eyeball-3d-model-low-poly-obj-fbx-ma-mb.png"
-                  alt="profile-picture">
-                <h1 class="post-name">Joseph Huang</h1>
-              </div>
-              <div class="post-content">
-                <div class="post-caption-wrapper">
-                  <p class="post-caption">This defines the ability for a flex item to grow if necessary. It accepts a unitless value that serves
-                    as a proportion. It dictates what amount of the available space inside the flex container the item should
-                    take up. </p>
-                </div>
-                <div class="post-picture-single">
-                  <img src="https://img1.cgtrader.com/items/175667/2975b0ecc5/eyeball-3d-model-low-poly-obj-fbx-ma-mb.png" alt="post-picture">
-                </div>
-              </div>
-              <div class="post-react">
-                <div class="post-react-icon">
-                  <i class="far fa-heart"></i>
-                </div>
-                <div>
-                  <p>1.2k likes</p>
-                </div>
-                <div class="post-react-icon">
-                  <i class="far fa-comment"></i>
-                </div>
-                <div>
-                  <p>100 comments</p>
-                </div>
-              </div>
-              <div class="post-comment">
-                <textarea class="post-comment-textarea" name="comment" rows="3" placeholder="Leave a comment..."></textarea>
-              </div>
-            </div>
-
-            <div class="card post-card">
-              <div class="post-header">
-                <img class="post-pic" src="https://img1.cgtrader.com/items/175667/2975b0ecc5/eyeball-3d-model-low-poly-obj-fbx-ma-mb.png"
-                  alt="profile-picture">
-                <h1 class="post-name">Joseph Huang</h1>
-              </div>
-              <div class="post-content">
-                <div class="post-caption-wrapper">
-                  <p class="post-caption">This defines the ability for a flex item to grow if necessary. It accepts a unitless value that serves
-                    as a proportion. It dictates what amount of the available space inside the flex container the item should
-                    take up. </p>
-                </div>
-                <div class="post-picture-single">
-                  <img src="https://img1.cgtrader.com/items/175667/2975b0ecc5/eyeball-3d-model-low-poly-obj-fbx-ma-mb.png" alt="post-picture">
-                </div>
-              </div>
-              <div class="post-react">
-                <div class="post-react-icon">
-                  <i class="far fa-heart"></i>
-                </div>
-                <div>
-                  <p>1.2k likes</p>
-                </div>
-                <div class="post-react-icon">
-                  <i class="far fa-comment"></i>
-                </div>
-                <div>
-                  <p>100 comments</p>
-                </div>
-              </div>
-              <div class="post-comment">
-                <textarea class="post-comment-textarea" name="comment" rows="3" placeholder="Leave a comment..."></textarea>
-              </div>
-            </div>
-
-            <div class="card post-card">
-              <div class="post-header">
                 <img class="post-pic" src="../public/img/gabby-profile.jpg" alt="profile-picture">
                 <h1 class="post-name">Gabby Morales</h1>
               </div>
@@ -218,6 +117,263 @@
                 </div>
                 <div>
                   <p>6 comments</p>
+                </div>
+              </div>
+              <div class="post-comment">
+                <textarea class="post-comment-textarea" name="comment" rows="3" placeholder="Leave a comment..."></textarea>
+              </div>
+            </div>
+
+            <div class="card post-card">
+              <div class="post-header">
+                <img class="post-pic" src="https://img1.cgtrader.com/items/175667/2975b0ecc5/eyeball-3d-model-low-poly-obj-fbx-ma-mb.png"
+                  alt="profile-picture">
+                <h1 class="post-name">Joseph Huang</h1>
+              </div>
+              <div class="post-content">
+                <div class="post-caption-wrapper">
+                  <p class="post-caption">This defines the ability for a flex item to grow if necessary. It accepts a unitless value that serves
+                    as a proportion. It dictates what amount of the available space inside the flex container the item should
+                    take up. </p>
+                </div>
+                <div class="post-picture-single">
+                  <img src="../public/img/photo2.jpg" alt="post-picture">
+                </div>
+              </div>
+              <div class="post-react">
+                <div class="post-react-icon">
+                  <i class="far fa-heart"></i>
+                </div>
+                <div>
+                  <p>1.2k likes</p>
+                </div>
+                <div class="post-react-icon">
+                  <i class="far fa-comment"></i>
+                </div>
+                <div>
+                  <p>100 comments</p>
+                </div>
+              </div>
+              <div class="post-comment">
+                <textarea class="post-comment-textarea" name="comment" rows="3" placeholder="Leave a comment..."></textarea>
+              </div>
+            </div>
+
+            <div class="card post-card">
+              <div class="post-header">
+                <img class="post-pic" src="../public/img/rohan-profile.jpg" alt="profile-picture">
+                <h1 class="post-name">Rohan Kumar</h1>
+              </div>
+              <div class="post-content">
+                <div class="post-caption-wrapper">
+                  <p class="post-caption">This defines the ability for a flex item to grow if necessary. It accepts a unitless value that serves
+                    as a proportion. It dictates what amount of the available space inside the flex container the item should
+                    take up. </p>
+                </div>
+                <div class="post-picture-gallery">
+                  <div class="post-picture-gallery-left">
+                    <img src="../public/img/photo7.jpg" alt="post-picture">
+                    <img src="../public/img/photo10.jpg" alt="post-picture">
+                  </div>
+                  <div class="post-picture-gallery-right">
+                    <img src="../public/img/photo8.jpg" alt="post-picture">
+                    <img src="../public/img/photo9.jpg" alt="post-picture">
+                  </div>
+                </div>
+              </div>
+              <div class="post-react">
+                <div class="post-react-icon">
+                  <i class="far fa-heart"></i>
+                </div>
+                <div>
+                  <p>1.2k likes</p>
+                </div>
+                <div class="post-react-icon">
+                  <i class="far fa-comment"></i>
+                </div>
+                <div>
+                  <p>100 comments</p>
+                </div>
+              </div>
+              <div class="post-comment">
+                <textarea class="post-comment-textarea" name="comment" rows="3" placeholder="Leave a comment..."></textarea>
+              </div>
+            </div>
+
+            <div class="card post-card">
+              <div class="post-header">
+                <img class="post-pic" src="https://img1.cgtrader.com/items/175667/2975b0ecc5/eyeball-3d-model-low-poly-obj-fbx-ma-mb.png"
+                  alt="profile-picture">
+                <h1 class="post-name">Joseph Huang</h1>
+              </div>
+              <div class="post-content">
+                <div class="post-caption-wrapper">
+                  <p class="post-caption">This defines the ability for a flex item to grow if necessary. It accepts a unitless value that serves
+                    as a proportion. It dictates what amount of the available space inside the flex container the item should
+                    take up. </p>
+                </div>
+                <div class="post-picture-single">
+                  <img src="../public/img/photo3.jpg" alt="post-picture">
+                </div>
+              </div>
+              <div class="post-react">
+                <div class="post-react-icon">
+                  <i class="far fa-heart"></i>
+                </div>
+                <div>
+                  <p>1.2k likes</p>
+                </div>
+                <div class="post-react-icon">
+                  <i class="far fa-comment"></i>
+                </div>
+                <div>
+                  <p>100 comments</p>
+                </div>
+              </div>
+              <div class="post-comment">
+                <textarea class="post-comment-textarea" name="comment" rows="3" placeholder="Leave a comment..."></textarea>
+              </div>
+            </div>
+
+            <div class="card post-card">
+              <div class="post-header">
+                <img class="post-pic" src="https://img1.cgtrader.com/items/175667/2975b0ecc5/eyeball-3d-model-low-poly-obj-fbx-ma-mb.png"
+                  alt="profile-picture">
+                <h1 class="post-name">Joseph Huang</h1>
+              </div>
+              <div class="post-content">
+                <div class="post-caption-wrapper">
+                  <p class="post-caption">This defines the ability for a flex item to grow if necessary. It accepts a unitless value that serves
+                    as a proportion. It dictates what amount of the available space inside the flex container the item should
+                    take up. </p>
+                </div>
+                <div class="post-picture-single">
+                  <img src="../public/img/photo4.jpg" alt="post-picture">
+                </div>
+              </div>
+              <div class="post-react">
+                <div class="post-react-icon">
+                  <i class="far fa-heart"></i>
+                </div>
+                <div>
+                  <p>1.2k likes</p>
+                </div>
+                <div class="post-react-icon">
+                  <i class="far fa-comment"></i>
+                </div>
+                <div>
+                  <p>100 comments</p>
+                </div>
+              </div>
+              <div class="post-comment">
+                <textarea class="post-comment-textarea" name="comment" rows="3" placeholder="Leave a comment..."></textarea>
+              </div>
+            </div>
+
+            <div class="card post-card">
+              <div class="post-header">
+                <img class="post-pic" src="https://img1.cgtrader.com/items/175667/2975b0ecc5/eyeball-3d-model-low-poly-obj-fbx-ma-mb.png"
+                  alt="profile-picture">
+                <h1 class="post-name">Joseph Huang</h1>
+              </div>
+              <div class="post-content">
+                <div class="post-caption-wrapper">
+                  <p class="post-caption">This defines the ability for a flex item to grow if necessary. It accepts a unitless value that serves
+                    as a proportion. It dictates what amount of the available space inside the flex container the item should
+                    take up. </p>
+                </div>
+                <div class="post-picture-single">
+                  <img src="../public/img/photo5.jpg" alt="post-picture">
+                </div>
+              </div>
+              <div class="post-react">
+                <div class="post-react-icon">
+                  <i class="far fa-heart"></i>
+                </div>
+                <div>
+                  <p>1.2k likes</p>
+                </div>
+                <div class="post-react-icon">
+                  <i class="far fa-comment"></i>
+                </div>
+                <div>
+                  <p>100 comments</p>
+                </div>
+              </div>
+              <div class="post-comment">
+                <textarea class="post-comment-textarea" name="comment" rows="3" placeholder="Leave a comment..."></textarea>
+              </div>
+            </div>
+
+            <div class="card post-card">
+              <div class="post-header">
+                <img class="post-pic" src="https://img1.cgtrader.com/items/175667/2975b0ecc5/eyeball-3d-model-low-poly-obj-fbx-ma-mb.png"
+                  alt="profile-picture">
+                <h1 class="post-name">Joseph Huang</h1>
+              </div>
+              <div class="post-content">
+                <div class="post-caption-wrapper">
+                  <p class="post-caption">This defines the ability for a flex item to grow if necessary. It accepts a unitless value that serves
+                    as a proportion. It dictates what amount of the available space inside the flex container the item should
+                    take up. </p>
+                </div>
+                <div class="post-picture-single">
+                  <img src="../public/img/photo6.jpg" alt="post-picture">
+                </div>
+              </div>
+              <div class="post-react">
+                <div class="post-react-icon">
+                  <i class="far fa-heart"></i>
+                </div>
+                <div>
+                  <p>1.2k likes</p>
+                </div>
+                <div class="post-react-icon">
+                  <i class="far fa-comment"></i>
+                </div>
+                <div>
+                  <p>100 comments</p>
+                </div>
+              </div>
+              <div class="post-comment">
+                <textarea class="post-comment-textarea" name="comment" rows="3" placeholder="Leave a comment..."></textarea>
+              </div>
+            </div>
+
+            <div class="card post-card">
+              <div class="post-header">
+                <img class="post-pic" src="../public/img/rohan-profile.jpg" alt="profile-picture">
+                <h1 class="post-name">Rohan Kumar</h1>
+              </div>
+              <div class="post-content">
+                <div class="post-caption-wrapper">
+                  <p class="post-caption">This defines the ability for a flex item to grow if necessary. It accepts a unitless value that serves
+                    as a proportion. It dictates what amount of the available space inside the flex container the item should
+                    take up. </p>
+                </div>
+                <div class="post-picture-gallery">
+                  <div class="post-picture-gallery-left">
+                    <img src="../public/img/photo11.jpg" alt="post-picture">
+                    <img src="../public/img/photo12.jpg" alt="post-picture">
+                  </div>
+                  <div class="post-picture-gallery-right">
+                    <img src="../public/img/photo12.jpg" alt="post-picture">
+                    <img src="../public/img/photo13.jpg" alt="post-picture">
+                  </div>
+                </div>
+              </div>
+              <div class="post-react">
+                <div class="post-react-icon">
+                  <i class="far fa-heart"></i>
+                </div>
+                <div>
+                  <p>1.2k likes</p>
+                </div>
+                <div class="post-react-icon">
+                  <i class="far fa-comment"></i>
+                </div>
+                <div>
+                  <p>100 comments</p>
                 </div>
               </div>
               <div class="post-comment">
@@ -261,12 +417,11 @@
 
             </div>
 
-          </div>
-
-          <div class="card advertisement-card" id="recording">
-            <video id="video" preload loop muted autoplay></video>
-            <br>
-            <button id="btn-stop-recording">Stop Recording</button>
+            <div class="card advertisement-card" id="recording">
+              <video id="video" preload loop muted autoplay></video>
+              <br>
+              <button id="btn-stop-recording">Stop Recording</button>
+            </div>
           </div>
 
         </div>
@@ -276,9 +431,13 @@
   </div>
 
   <div id="whos-watching">
-    <h1 id="prompt">Who's watching?</h1>
-    <input id="prompt-input" type="text" name="username" value="">
-    <input id="prompt-submit" type="submit" value="Enter">
+    <div id="prompt-wrapper">
+      <h1 id="prompt">Who's watching?</h1>
+      <br />
+      <br />
+      <input id="prompt-input" type="text" name="username" value="">
+      <input id="prompt-submit" type="submit" value="Enter">
+    </div>
   </div>
 </body>
 <script type="text/javascript" src="/node_modules/tracking/build/tracking-min.js"></script>

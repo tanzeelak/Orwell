@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: 'Open Sans', sans-serif; }
+  font-family: "Open Sans", sans-serif; }
 
 .inline-wrapper {
   display: inline-block; }
@@ -153,7 +153,7 @@ p {
   background-color: #ececec;
   border-radius: 5px;
   padding: 10px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   box-sizing: border-box; }
 
 .trending-persons-card {
@@ -196,17 +196,32 @@ canvas {
   width: 100vw;
   height: 100vh;
   background-color: black;
-  color: white; }
+  color: white;
+  overflow-y: hidden; }
+  #whos-watching #prompt-wrapper {
+    padding: 20%; }
   #whos-watching #prompt {
-    margin: 0; }
+    margin: 0;
+    font-size: 5em;
+    font-family: "Playfair Display", serif;
+    letter-spacing: 1px;
+    text-align: center; }
   #whos-watching #prompt-input {
     background-color: black;
     border: none;
     border-bottom: solid 2px white;
-    width: 500px; }
+    width: 100%;
+    color: white;
+    font-size: 2em;
+    line-height: 30px;
+    padding-bottom: 20px;
+    text-align: center;
+    font-family: "Open Sans", sans-serif; }
   #whos-watching #prompt-submit {
     background-color: black;
     border: none;
-    color: white; }
+    color: white;
+    float: right;
+    margin-top: 20px; }
 
 /*# sourceMappingURL=social.css.map */
