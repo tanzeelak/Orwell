@@ -27,4 +27,4 @@ A narrative illustrating the lack of security on social media. Orwell's story is
   - To restart the server without exiting nodemon
     - `rs`
 - Run the sass watcher. Sass watches the .scss files for changes and outputs the css version into the .css files.
-  - `sass watch .`
+  - `sass --watch .`
