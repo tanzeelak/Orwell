@@ -1,6 +1,5 @@
 body {
-  margin: 0;
-  font-family: "Open Sans", sans-serif; }
+  margin: 0; }
 
 .inline-wrapper {
   display: inline-block; }
@@ -8,10 +7,12 @@ body {
 .subtitle {
   font-size: 16px;
   color: grey;
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  font-family: "Open Sans", sans-serif; }
 
 p {
-  font-size: 14px; }
+  font-size: 14px;
+  font-family: "Open Sans", sans-serif; }
 
 #header {
   background-color: #7A86CC;
@@ -31,7 +32,9 @@ p {
       color: white;
       font-size: 24px;
       padding-left: 10px;
-      vertical-align: middle; }
+      vertical-align: middle;
+      font-family: "Playfair Display", serif;
+      font-weight: bold; }
     #header .header-logo .header-logo-image {
       display: inline-block;
       font-size: 2em;
@@ -113,7 +116,13 @@ p {
   display: inline-block;
   font-size: 18px;
   vertical-align: middle;
-  margin: 0 5px; }
+  margin: 0 5px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold; }
+
+.post-caption {
+  color: #4a4a4a;
+  margin-bottom: 20px; }
 
 .post-picture-single img {
   width: 100%; }

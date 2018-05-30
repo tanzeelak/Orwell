@@ -7,7 +7,6 @@ $serif: 'Playfair Display', serif;
 // GLOBAL CSS
 body {
   margin: 0;
-  font-family: $sans;
 }
 
 .inline-wrapper {
@@ -18,10 +17,12 @@ body {
   font-size: 16px;
   color: grey;
   margin-bottom: 20px;
+  font-family: $sans;
 }
 
 p {
   font-size: 14px;
+  font-family: $sans;
 }
 
 // HEADER
@@ -46,6 +47,8 @@ p {
       font-size: 24px;
       padding-left: 10px;
       vertical-align: middle;
+      font-family: $serif;
+      font-weight: bold;
     }
 
     .header-logo-image {
@@ -159,6 +162,13 @@ p {
   font-size: 18px;
   vertical-align: middle;
   margin: 0 5px;
+  font-family: $sans;
+  font-weight: bold;
+}
+
+.post-caption {
+  color: #4a4a4a;
+  margin-bottom: 20px;
 }
 
 .post-picture-single img {
