@@ -2,7 +2,7 @@ s = document.getElementById("social-media-page").style;
 s.opacity = 1;
 
 const fadePage = () => {
-  (s.opacity -= 0.01) < 0 ? (s.display = "block") : setTimeout(fadePage, 40);
+  (s.opacity -= 0.03) < 0 ? (s.display = "block") : setTimeout(fadePage, 40);
 };
 
 var renderer,
@@ -131,13 +131,13 @@ const animate = () => {
         upper_flag = 1;
       }
       if (!upper_flag) {
-        mesh.rotation.x += 0.015;
+        mesh.rotation.x += 0.05;
       } else {
-        mesh.rotation.x -= 0.015;
+        mesh.rotation.x -= 0.05;
       }
     }
     if (mesh.name == "eye_ball") {
-      mesh.rotation.y = -(((faceX - ((videoX+100)/2))/((videoX+100)/2)) * maxXRot);
+      mesh.rotation.y = -(((faceX - ((videoX+120)/2))/((videoX+120)/2)) * maxXRot);
       //mesh.rotation.x = -(((faceY - (videoY/2))/(videoY/2)) * maxYRot);
     }
   });
@@ -157,5 +157,6 @@ const fillRandArrays = (length, min, max) => {
 trackingInit();
 fillRandArrays(3, -2, 2);
 setTimeout(fadePage, 7000);
-loadScene();
+setTimeout(loadScene, 15000);
+//loadScene();
 animate();
