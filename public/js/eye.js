@@ -86,11 +86,19 @@ const loadLoader = () => {
 };
 
 const lower_lid = (geometry, materials) => {
-  for (var i = 0; i < 5; i++) {
+  for (var i = 0; i < 60; i++) {
     var lower_lid_mesh = new THREE.Mesh(geometry, material_eye_lid);
     lower_lid_mesh.position.x = randX[i];
     lower_lid_mesh.position.y = randY[i];
-    lower_lid_mesh.position.z = -10;
+    if (i <= 20) {
+      lower_lid_mesh.position.z = -10;
+    }
+    else if (i <= 40) {
+      lower_lid_mesh.position.z = -30;
+    }
+    else if (i < 60) {
+      lower_lid_mesh.position.z = -50;
+    }
     lower_lid_mesh.name = "lower_lid";
     meshes.push(lower_lid_mesh);
     scenes[0].add(lower_lid_mesh);
@@ -98,11 +106,19 @@ const lower_lid = (geometry, materials) => {
 };
 
 const upper_lid = (geometry, materials) => {
-  for (var i = 0; i < 5; i++) {
+  for (var i = 0; i < 60; i++) {
     var upper_lid_mesh = new THREE.Mesh(geometry, material_eye_lid);
     upper_lid_mesh.position.x = randX[i];
     upper_lid_mesh.position.y = randY[i];
-    upper_lid_mesh.position.z = -10;
+    if (i <= 20) {
+      upper_lid_mesh.position.z = -10;
+    }
+    else if (i <= 40) {
+      upper_lid_mesh.position.z = -30;
+    }
+    else if (i < 60) {
+      upper_lid_mesh.position.z = -50;
+    }
     upper_lid_mesh.name = "upper_lid";
     meshes.push(upper_lid_mesh);
     scenes[0].add(upper_lid_mesh);
@@ -110,11 +126,19 @@ const upper_lid = (geometry, materials) => {
 };
 
 const eye_ball = (geometry, materials) => {
-  for (var i = 0; i < 5; i++) {
+  for (var i = 0; i < 60; i++) {
     var eye_ball_mesh = new THREE.Mesh(geometry, material);
     eye_ball_mesh.position.x = randX[i];
     eye_ball_mesh.position.y = randY[i];
-    eye_ball_mesh.position.z = -10;
+    if (i <= 20) {
+      eye_ball_mesh.position.z = -10;
+    }
+    else if (i <= 40) {
+      eye_ball_mesh.position.z = -30;
+    }
+    else if (i < 60) {
+      eye_ball_mesh_mesh.position.z = -50;
+    }
     eye_ball_mesh.name = "eye_ball";
     meshes.push(eye_ball_mesh);
     scenes[0].add(eye_ball_mesh);
@@ -155,8 +179,7 @@ const fillRandArrays = (length, min, max) => {
 };
 
 trackingInit();
-fillRandArrays(3, -2, 2);
+fillRandArrays(60, -10, 10);
 setTimeout(fadePage, 7000);
-setTimeout(loadScene, 15000);
-//loadScene();
+setTimeout(loadScene, 13000);
 animate();
