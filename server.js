@@ -27,6 +27,10 @@ router.get("/eye",function(req,res){
     res.sendFile(path.join(__dirname + '/views/' + 'eye.html'));
 });
 
+router.get("/camera_test",function(req,res){
+  res.sendFile(path.join(__dirname + '/views/' + 'camera_test.html'));
+});
+
 router.get("*",function(req,res){
   res.sendFile(path.join(__dirname + '/views/' + '404.html'));
 });
