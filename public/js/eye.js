@@ -205,7 +205,7 @@ const animate = () => {
       setTimeout(blink(meshes[i]), Math.round(Math.random() * 10000));
     }
     if (meshes[i].name == "eye_ball") {
-      meshes[i].rotation.y = -(((faceX - ((videoX+200)/2))/((videoX+200)/2)) * maxXRot);
+      meshes[i].rotation.y = -(((faceX - ((videoX+180)/2))/((videoX+180)/2)) * maxXRot);
       //mesh.rotation.x = -(((faceY - (videoY/2))/(videoY/2)) * maxYRot);
     }
   }
@@ -218,7 +218,7 @@ const fillRandArrays = () => {
     randY[i] = (Math.random() - 0.5) * 15;
     randZ[i] = Math.random();
     while (randZ[i] < 0.5) {
-      randZ[i] = Math.random
+      randZ[i] = Math.random();
     }
   }
 
