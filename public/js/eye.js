@@ -47,7 +47,6 @@ camera = new THREE.PerspectiveCamera(
 
 const setFaceCoords = (setX, setY) => {
   faceX = setX; faceY = setY;
-  console.log(faceX, faceY)
 }
 
 //SCENE
@@ -86,17 +85,17 @@ const loadLoader = () => {
 };
 
 const lower_lid = (geometry, materials) => {
-  for (var i = 0; i < 60; i++) {
+  for (var i = 0; i < 100; i++) {
     var lower_lid_mesh = new THREE.Mesh(geometry, material_eye_lid);
     lower_lid_mesh.position.x = randX[i];
     lower_lid_mesh.position.y = randY[i];
     if (i < 15) {
       lower_lid_mesh.position.z = -15;
     }
-    else if (i < 40) {
+    else if (i < 60) {
       lower_lid_mesh.position.z = -30;
     }
-    else if (i < 60) {
+    else if (i < 100) {
       lower_lid_mesh.position.z = -50;
     }
     lower_lid_mesh.name = "lower_lid";
@@ -106,17 +105,17 @@ const lower_lid = (geometry, materials) => {
 };
 
 const upper_lid = (geometry, materials) => {
-  for (var i = 0; i < 60; i++) {
+  for (var i = 0; i < 100; i++) {
     var upper_lid_mesh = new THREE.Mesh(geometry, material_eye_lid);
     upper_lid_mesh.position.x = randX[i];
     upper_lid_mesh.position.y = randY[i];
     if (i < 20) {
       upper_lid_mesh.position.z = -15;
     }
-    else if (i < 40) {
+    else if (i < 60) {
       upper_lid_mesh.position.z = -30;
     }
-    else if (i < 60) {
+    else if (i < 100) {
       upper_lid_mesh.position.z = -50;
     }
     upper_lid_mesh.name = "upper_lid";
@@ -126,18 +125,18 @@ const upper_lid = (geometry, materials) => {
 };
 
 const eye_ball = (geometry, materials) => {
-  for (var i = 0; i < 60; i++) {
+  for (var i = 0; i < 100; i++) {
     var eye_ball_mesh = new THREE.Mesh(geometry, material);
     eye_ball_mesh.position.x = randX[i];
     eye_ball_mesh.position.y = randY[i];
     if (i < 15) {
       eye_ball_mesh.position.z = -15;
     }
-    else if (i < 40) {
+    else if (i < 60) {
       eye_ball_mesh.position.z = -30;
     }
-    else if (i < 60) {
-      eye_ball_mesh_mesh.position.z = -50;
+    else if (i < 100) {
+      eye_ball_mesh.position.z = -50;
     }
     eye_ball_mesh.name = "eye_ball";
     meshes.push(eye_ball_mesh);
@@ -145,51 +144,79 @@ const eye_ball = (geometry, materials) => {
   }
 };
 
+const blink = (mesh) => {
+  if (meshes[i].rotation.x < -0.04) {
+    upper_flag = 0;
+  } else if (meshes[i].rotation.x > 1) {
+    upper_flag = 1;
+  }
+  if (!upper_flag) {
+    meshes[i].rotation.x += 0.05;
+  } 
+  else {
+    meshes[i].rotation.x -= 0.05;
+  }
+};
+
+var maxFrames = 100000;
+
 const animate = () => {
   requestAnimationFrame(animate);
-  meshes.forEach(function(mesh) {
-    if (mesh.name == "upper_lid") {
-      if (mesh.rotation.x < -0.04) {
-        upper_flag = 0;
-      } else if (mesh.rotation.x > 1) {
-        upper_flag = 1;
-      }
-      if (!upper_flag) {
-        mesh.rotation.x += 0.05;
-      } else {
-        mesh.rotation.x -= 0.05;
-      }
+  for (i = 0; i < meshes.length; i++) {
+    if (meshes[i].name == "upper_lid") {
+      setTimeout(blink(meshes[i]), Math.round(Math.random() * 10000));
     }
-    if (mesh.name == "eye_ball") {
-      mesh.rotation.y = -(((faceX - ((videoX+120)/2))/((videoX+120)/2)) * maxXRot);
+    if (meshes[i].name == "eye_ball") {
+      meshes[i].rotation.y = -(((faceX - ((videoX+150)/2))/((videoX+150)/2)) * maxXRot);
       //mesh.rotation.x = -(((faceY - (videoY/2))/(videoY/2)) * maxYRot);
     }
-  });
+  }
   renderer.render(scenes[0], camera);
 };
 
 const fillRandArrays = () => {
   for (var i = 0; i < 15; i++) {
-    randX[i] = (Math.random() - 0.5) * 20;
-    randY[i] = (Math.random() - 0.5) * 20;
+    randX[i] = (Math.random() - 0.5) * 30;
+    randY[i] = (Math.random() - 0.5) * 30;
   }
 
-  for (var i = 20; i < 40; i++) {
+  for (var i = 20; i < 60; i++) {
     randX[i] = (Math.random() - 0.5) * 40;
     randY[i] = (Math.random() - 0.5) * 40;
   }
 
-  for (var i = 40; i < 60; i++) {
+  for (var i = 60; i < 100; i++) {
     randX[i] = (Math.random() - 0.5) * 50;
     randY[i] = (Math.random() - 0.5) * 50;
   }
-
-  console.log(randX);
-  console.log(randY);
 };
 
 trackingInit();
 fillRandArrays();
 setTimeout(fadePage, 7000);
-setTimeout(loadScene, 13000);
+setTimeout(loadScene, 15000);
 animate();
+
+var velocity = new THREE.Vector3();
+var prevTime = performance.now();
+var timedEye = setInterval(moveCamera, 0);
+const moveCamera = () => {
+  console.log("trying to move");
+  //camera.translateZ(-100);
+  //console.log("hello");
+  var time = performance.now();
+  var delta = (time - prevTime) / 1000;
+  //reset z velocity to be 0 always. But override it if user presses up or w. See next line...      
+  velocity.z -= velocity.z * 10.0 * delta;
+  //if the user pressed 'up' or 'w', set velocity.z to a value > 0.  
+  velocity.z -= 1000.0 * delta;
+  //pass velocity as an argument to translateZ and call it on camera.
+  camera.translateZ(velocity.z * delta);
+  prevTime = time;
+};
+
+setTimeout(stopCamera, 30000);
+
+const stopCamera = () => {
+    window.clearInterval(timedEye);
+};
