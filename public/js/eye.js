@@ -268,7 +268,7 @@ const stopCamera = () => {
 trackingInit();
 fillRandArrays();
 setTimeout(fadePage, 7000);
-setTimeout(loadScene, 15000);
-setTimeout(beginCamera, 20000);
+setTimeout(loadScene, 12000);
+setTimeout(beginCamera, 15000);
 
 animate();
