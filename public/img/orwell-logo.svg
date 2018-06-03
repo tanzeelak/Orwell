@@ -1,0 +1,13 @@
+<svg width="201" height="152" viewBox="0 0 201 152" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="path-1-inside-1" fill="white">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M100.5 0C57.5556 0 20.0607 23.7297 0 59C20.0607 94.2703 57.5556 118 100.5 118C143.444 118 180.939 94.2703 201 59C180.939 23.7297 143.444 0 100.5 0Z"/>
+</mask>
+<path d="M0 59L-8.69237 54.056L-11.5043 59L-8.69237 63.944L0 59ZM201 59L209.692 63.944L212.504 59L209.692 54.056L201 59ZM8.69237 63.944C27.0774 31.6198 61.3532 10 100.5 10V-10C53.7581 -10 13.044 15.8396 -8.69237 54.056L8.69237 63.944ZM100.5 108C61.3532 108 27.0774 86.3802 8.69237 54.056L-8.69237 63.944C13.044 102.16 53.7581 128 100.5 128V108ZM192.308 54.056C173.923 86.3802 139.647 108 100.5 108V128C147.242 128 187.956 102.16 209.692 63.944L192.308 54.056ZM100.5 10C139.647 10 173.923 31.6198 192.308 63.944L209.692 54.056C187.956 15.8396 147.242 -10 100.5 -10V10Z" transform="translate(0 34)" fill="black" mask="url(#path-1-inside-1)"/>
+<circle cx="57.5" cy="57.5" r="52.5" transform="translate(44 37)" stroke="black" stroke-width="10"/>
+<circle cx="25" cy="25" r="25" transform="translate(77 70)" fill="black"/>
+<line y1="-5" x2="37.2022" y2="-5" transform="translate(0 37) rotate(53.7462)" stroke="black" stroke-width="10"/>
+<line y1="-5" x2="37.2022" y2="-5" transform="translate(44 11) rotate(68.554)" stroke="black" stroke-width="10"/>
+<line y1="-5" x2="37.2022" y2="-5" transform="translate(93 1) rotate(87.2602)" stroke="black" stroke-width="10"/>
+<line y1="-5" x2="37.2022" y2="-5" transform="translate(148.495 8) rotate(112.932)" stroke="black" stroke-width="10"/>
+<line y1="-5" x2="37.2022" y2="-5" transform="translate(188.504 31.1386) rotate(131.215)" stroke="black" stroke-width="10"/>
+</svg>
