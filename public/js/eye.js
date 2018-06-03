@@ -1,15 +1,16 @@
 smp = document.getElementById("social-media-page").style;
-c = document.getElementById("myCanvas").style;
 wwp = document.getElementById("whos-watching").style;
 smp.opacity = 1;
 wwp.display = "none";
+wwp.opacity = 0;
 
 const fadeSocialMediaPage = () => {
   (smp.opacity -= 0.03) < 0 ? (smp.display = "none") : setTimeout(fadeSocialMediaPage, 40);
 };
 
-const fadeCanvas = () => {
-  (c.opacity -= 0.03) < 0 ? (c.display = "none") : setTimeout(fadeCanvas, 40);
+const fadeWhosWatching = () => {
+  wwp.display = "block";
+  (wwp.opacity += 0.03) > 1 ? null : setTimeout(fadeWhosWatching, 40);
 };
 
 var renderer,
@@ -31,6 +32,8 @@ var renderer,
   maxXRot = -1,
   maxYRot = 1,
   upper_flag = 0;
+
+var AF;
 
 //RENDERER
 renderer = new THREE.WebGLRenderer({
@@ -204,7 +207,7 @@ const blink = (mesh) => {
 var maxFrames = 100000;
 
 const animate = () => {
-  requestAnimationFrame(animate);
+  AF = requestAnimationFrame(animate);
   for (i = 0; i < meshes.length; i++) {
     if (meshes[i].name == "upper_lid") {
       setTimeout(blink(meshes[i]), Math.round(Math.random() * 10000));
@@ -216,6 +219,10 @@ const animate = () => {
   }
   renderer.render(scenes[0], camera);
 };
+
+const stopAnimation = () => {
+  cancelAnimationFrame(AF);
+}
 
 const fillRandArrays = () => {
   for (var i = 0; i < 15; i++) {
@@ -260,6 +267,9 @@ fillRandArrays();
 setTimeout(fadeSocialMediaPage, 7000);
 setTimeout(loadScene, 10000);
 animate();
+// setTimeout(stopAnimation, 30000);
+// setTimeout(fadeWhosWatching, 25000);
+
 
 var velocity = new THREE.Vector3();
 var prevTime = performance.now();
