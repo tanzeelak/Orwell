@@ -84,7 +84,7 @@ const loadLoader = () => {
 };
 
 const lower_lid = (geometry, materials) => {
-  for (var i = 0; i < 201; i++) {
+  for (var i = 0; i < 100; i++) {
     var lower_lid_mesh = new THREE.Mesh(geometry, material_eye_lid);
 
     if (i == 200) {
@@ -117,7 +117,7 @@ const lower_lid = (geometry, materials) => {
 };
 
 const upper_lid = (geometry, materials) => {
-  for (var i = 0; i < 201; i++) {
+  for (var i = 0; i < 100; i++) {
     var upper_lid_mesh = new THREE.Mesh(geometry, material_eye_lid);
 
     if (i == 200) {
@@ -149,7 +149,7 @@ const upper_lid = (geometry, materials) => {
 };
 
 const eye_ball = (geometry, materials) => {
-  for (var i = 0; i < 201; i++) {
+  for (var i = 0; i < 100; i++) {
     var eye_ball_mesh = new THREE.Mesh(geometry, material);
     
     if (i == 200) {
