@@ -7,8 +7,12 @@ function trackingInit(){
         var halfvidX = video.offsetWidth/2.0
         var halfvidY = video.offsetHeight/2.0;
         var pos = tracker.getCurrentPosition();
+        if(tracker.getScore() >= 0.4){
+            setFaceCoords((pos[37][0] - halfvidX)/halfvidX, (pos[37][1] - halfvidY)/halfvidY);
+        }else{
+            setFaceCoords(0, 0);
+        }
         console.log(pos[37], halfvidX)
-        setFaceCoords((pos[37][0] - halfvidX)/halfvidX, (pos[37][1] - halfvidY)/halfvidY);
     }, 100);
 }
 
