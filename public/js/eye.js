@@ -248,32 +248,27 @@ const fillRandArrays = () => {
   }
 };
 
+
+const moveCamera = () => {
+  console.log(camera.position.z);
+  console.log("trying to move");
+  camera.translateZ(-0.5);
+};
+
+
+const beginCamera = () => {
+  timedEye = setInterval(moveCamera, 0);    
+};
+
+const stopCamera = () => {
+  window.clearInterval(timedEye);
+};
+
+
 trackingInit();
 fillRandArrays();
 setTimeout(fadePage, 7000);
 setTimeout(loadScene, 15000);
+setTimeout(beginCamera, 20000);
+
 animate();
-
-var velocity = new THREE.Vector3();
-var prevTime = performance.now();
-var timedEye = setInterval(moveCamera, 0);
-const moveCamera = () => {
-  console.log("trying to move");
-  //camera.translateZ(-100);
-  //console.log("hello");
-  var time = performance.now();
-  var delta = (time - prevTime) / 1000;
-  //reset z velocity to be 0 always. But override it if user presses up or w. See next line...      
-  velocity.z -= velocity.z * 10.0 * delta;
-  //if the user pressed 'up' or 'w', set velocity.z to a value > 0.  
-  velocity.z -= 1000.0 * delta;
-  //pass velocity as an argument to translateZ and call it on camera.
-  camera.translateZ(velocity.z * delta);
-  prevTime = time;
-};
-
-setTimeout(stopCamera, 30000);
-
-const stopCamera = () => {
-    window.clearInterval(timedEye);
-};
