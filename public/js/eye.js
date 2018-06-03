@@ -10,6 +10,7 @@ var renderer,
   meshes = [],
   randX = [],
   randY = [],
+  randZ = [],
   camera,
   myCanvas = document.getElementById("myCanvas"),
   loader,
@@ -85,19 +86,32 @@ const loadLoader = () => {
 };
 
 const lower_lid = (geometry, materials) => {
-  for (var i = 0; i < 100; i++) {
+  for (var i = 0; i < 201; i++) {
     var lower_lid_mesh = new THREE.Mesh(geometry, material_eye_lid);
-    lower_lid_mesh.position.x = randX[i];
-    lower_lid_mesh.position.y = randY[i];
+
+    if (i == 200) {
+      lower_lid_mesh.position.x = 0;
+      lower_lid_mesh.position.y = 0;
+      lower_lid_mesh.position.z = -100;
+    }
+    else {
+      lower_lid_mesh.position.x = randX[i];
+      lower_lid_mesh.position.y = randY[i];
+    }
+    
     if (i < 15) {
-      lower_lid_mesh.position.z = -15;
+      lower_lid_mesh.position.z = -15 * randZ[i];
     }
     else if (i < 60) {
-      lower_lid_mesh.position.z = -30;
+      lower_lid_mesh.position.z = -30 * randZ[i];
     }
-    else if (i < 100) {
-      lower_lid_mesh.position.z = -50;
+    else if (i < 150) {
+      lower_lid_mesh.position.z = -50 * randZ[i];
     }
+    else if (i < 200) {
+      lower_lid_mesh.position.z = -70 * randZ[i];
+    }
+
     lower_lid_mesh.name = "lower_lid";
     meshes.push(lower_lid_mesh);
     scenes[0].add(lower_lid_mesh);
@@ -105,18 +119,30 @@ const lower_lid = (geometry, materials) => {
 };
 
 const upper_lid = (geometry, materials) => {
-  for (var i = 0; i < 100; i++) {
+  for (var i = 0; i < 201; i++) {
     var upper_lid_mesh = new THREE.Mesh(geometry, material_eye_lid);
-    upper_lid_mesh.position.x = randX[i];
-    upper_lid_mesh.position.y = randY[i];
-    if (i < 20) {
-      upper_lid_mesh.position.z = -15;
+
+    if (i == 200) {
+      upper_lid_mesh.position.x = 0;
+      upper_lid_mesh.position.y = 0;
+      upper_lid_mesh.position.z = -100;
+    }
+    else {
+      upper_lid_mesh.position.x = randX[i];
+      upper_lid_mesh.position.y = randY[i];
+    }
+
+    if (i < 15) {
+      upper_lid_mesh.position.z = -15 * randZ[i];
     }
     else if (i < 60) {
-      upper_lid_mesh.position.z = -30;
+      upper_lid_mesh.position.z = -30 * randZ[i];
     }
-    else if (i < 100) {
-      upper_lid_mesh.position.z = -50;
+    else if (i < 150) {
+      upper_lid_mesh.position.z = -50 * randZ[i];
+    }
+    else if (i < 200) {
+      upper_lid_mesh.position.z = -70 * randZ[i];
     }
     upper_lid_mesh.name = "upper_lid";
     meshes.push(upper_lid_mesh);
@@ -125,18 +151,30 @@ const upper_lid = (geometry, materials) => {
 };
 
 const eye_ball = (geometry, materials) => {
-  for (var i = 0; i < 100; i++) {
+  for (var i = 0; i < 201; i++) {
     var eye_ball_mesh = new THREE.Mesh(geometry, material);
-    eye_ball_mesh.position.x = randX[i];
-    eye_ball_mesh.position.y = randY[i];
+    
+    if (i == 200) {
+      eye_ball_mesh.position.x = 0;
+      eye_ball_mesh.position.y = 0;
+      eye_ball_mesh.position.z = -100;
+    }
+    else {
+      eye_ball_mesh.position.x = randX[i];
+      eye_ball_mesh.position.y = randY[i];
+    }
+
     if (i < 15) {
-      eye_ball_mesh.position.z = -15;
+      eye_ball_mesh.position.z = -15 * randZ[i];
     }
     else if (i < 60) {
-      eye_ball_mesh.position.z = -30;
+      eye_ball_mesh.position.z = -30 * randZ[i];
     }
-    else if (i < 100) {
-      eye_ball_mesh.position.z = -50;
+    else if (i < 150) {
+      eye_ball_mesh.position.z = -50 * randZ[i];
+    }
+    else if (i < 200) {
+      eye_ball_mesh.position.z = -70 * randZ[i];
     }
     eye_ball_mesh.name = "eye_ball";
     meshes.push(eye_ball_mesh);
@@ -167,7 +205,7 @@ const animate = () => {
       setTimeout(blink(meshes[i]), Math.round(Math.random() * 10000));
     }
     if (meshes[i].name == "eye_ball") {
-      meshes[i].rotation.y = -(((faceX - ((videoX+150)/2))/((videoX+150)/2)) * maxXRot);
+      meshes[i].rotation.y = -(((faceX - ((videoX+200)/2))/((videoX+200)/2)) * maxXRot);
       //mesh.rotation.x = -(((faceY - (videoY/2))/(videoY/2)) * maxYRot);
     }
   }
@@ -176,18 +214,39 @@ const animate = () => {
 
 const fillRandArrays = () => {
   for (var i = 0; i < 15; i++) {
+    randX[i] = (Math.random() - 0.5) * 15;
+    randY[i] = (Math.random() - 0.5) * 15;
+    randZ[i] = Math.random();
+    while (randZ[i] < 0.5) {
+      randZ[i] = Math.random
+    }
+  }
+
+  for (var i = 15; i < 60; i++) {
     randX[i] = (Math.random() - 0.5) * 30;
     randY[i] = (Math.random() - 0.5) * 30;
+    randZ[i] = Math.random();
+    while (randZ[i] < 0.5) {
+      randZ[i] = Math.random();
+    }
   }
 
-  for (var i = 20; i < 60; i++) {
-    randX[i] = (Math.random() - 0.5) * 40;
-    randY[i] = (Math.random() - 0.5) * 40;
+  for (var i = 60; i < 150; i++) {
+    randX[i] = (Math.random() - 0.5) * 45;
+    randY[i] = (Math.random() - 0.5) * 45;
+    randZ[i] = Math.random();
+    while (randZ[i] < 0.5) {
+      randZ[i] = Math.random();
+    }
   }
 
-  for (var i = 60; i < 100; i++) {
-    randX[i] = (Math.random() - 0.5) * 50;
-    randY[i] = (Math.random() - 0.5) * 50;
+  for (var i = 150; i < 200; i++) {
+    randX[i] = (Math.random() - 0.5) * 60;
+    randY[i] = (Math.random() - 0.5) * 60;
+    randZ[i] = Math.random();
+    while (randZ[i] < 0.5) {
+      randZ[i] = Math.random();
+    }
   }
 };
 
