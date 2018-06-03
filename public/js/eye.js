@@ -203,8 +203,8 @@ const animate = () => {
       setTimeout(blink(meshes[i]), Math.round(Math.random() * 10000));
     }
     if (meshes[i].name == "eye_ball") {
-      mesh.rotation.y = faceX * maxXRot;
-      mesh.rotation.x = faceY * maxYRot;
+      meshes[i].rotation.y = faceX * maxXRot;
+      meshes[i].rotation.x = faceY * maxYRot;
     }
   }
   renderer.render(scenes[0], camera);
