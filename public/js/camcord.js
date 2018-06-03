@@ -1,17 +1,17 @@
 var video = document.querySelector('video');
 function trackingInit(){
-	var tracker = new tracking.ObjectTracker('face');
-	tracker.setInitialScale(4);
-    tracker.setStepSize(2);
-    tracker.setEdgesDensity(0.1);
-    tracking.track(video, tracker, { camera: true });
-    console.log(video);
-    tracker.on("track", function(event) {
-        event.data.forEach(function(rect) {
-            setFaceCoords(rect.x + (rect.width/2), rect.y + (rect.height/2));
-        });
-    });
+    var tracker = new clm.tracker({scoreThreshold : 0.4});
+    tracker.init(); 
+    tracker.start(video);
+    setInterval(function updateCoords(){
+        var halfvidX = video.offsetWidth/2.0
+        var halfvidY = video.offsetHeight/2.0;
+        var pos = tracker.getCurrentPosition();
+        console.log(pos[37], halfvidX)
+        setFaceCoords((pos[37][0] - halfvidX)/halfvidX, (pos[37][1] - halfvidY)/halfvidY);
+    }, 100);
 }
+
 
 function captureCamera(callback) {
     navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(function(camera) {

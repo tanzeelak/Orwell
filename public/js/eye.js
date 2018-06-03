@@ -20,10 +20,8 @@ var renderer,
   faceY,
   light,
   light2,
-  videoX = 320,
-  videoY = 240,
-  maxXRot = 1,
-  maxYRot = -1,
+  maxXRot = -1,
+  maxYRot = 1,
   upper_flag = 0;
 
 //RENDERER
@@ -137,8 +135,8 @@ const animate = () => {
       }
     }
     if (mesh.name == "eye_ball") {
-      mesh.rotation.y = -(((faceX - ((videoX+100)/2))/((videoX+100)/2)) * maxXRot);
-      //mesh.rotation.x = -(((faceY - (videoY/2))/(videoY/2)) * maxYRot);
+      mesh.rotation.y = faceX * maxXRot;
+      mesh.rotation.x = faceY * maxYRot;
     }
   });
   renderer.render(scenes[0], camera);
