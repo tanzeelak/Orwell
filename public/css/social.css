@@ -203,6 +203,11 @@ canvas {
 .hide {
   display: none; }
 
+
+#recording {
+  opacity: 0;
+}
+
 #myCanvas {
   position: fixed;
   width: 100vw !important;
