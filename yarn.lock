@@ -195,10 +195,20 @@ ipaddr.js@1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/ipaddr.js/-/ipaddr.js-1.6.0.tgz#e3fa357b773da619f26e95f049d055c72796f86b"
 
+<<<<<<< HEAD
 "jsfeat@git+https://github.com/inspirit/jsfeat.git":
   version "0.0.8"
   resolved "git+https://github.com/inspirit/jsfeat.git#4c7b336bbeeb26e6cd4cdf3c7d414abe273846f3"
 
+=======
+<<<<<<< Updated upstream
+=======
+"jsfeat@git+https://github.com/inspirit/jsfeat":
+  version "0.0.8"
+  resolved "git+https://github.com/inspirit/jsfeat#4c7b336bbeeb26e6cd4cdf3c7d414abe273846f3"
+
+>>>>>>> Stashed changes
+>>>>>>> katie-eyePositioning
 media-typer@0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
