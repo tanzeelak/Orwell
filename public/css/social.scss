@@ -1,8 +1,9 @@
-$orwell-blue: #7A86CC;
-$orwell-lightblue: #D6DEEA;
-$orwell-lightgrey: #ececec;
-$sans: 'Open Sans', sans-serif;
-$serif: 'Playfair Display', serif;
+$orwell-lightgrey: #f5f5f5;
+$orwell-grey: #e6e6e6;
+$orwell-darkgrey: grey;
+$orwell-white: white;
+$sans: 'Lato', sans-serif;
+$monospace: 'Source Code Pro', monospace;
 
 // GLOBAL CSS
 body {
@@ -15,7 +16,7 @@ body {
 
 .subtitle {
   font-size: 16px;
-  color: grey;
+  color: $orwell-darkgrey;
   margin-bottom: 20px;
   font-family: $sans;
 }
@@ -27,34 +28,40 @@ p {
 
 // HEADER
 #header {
-  background-color: $orwell-blue;
+  background-color: $orwell-white;
   height: 70px;
   width: 100%;
   position: fixed;
   top: 0;
   index: 99;
+  border-bottom: solid 1px $orwell-grey;
 
   .header-logo {
     display: flex;
     flex-direction: row;
     height: 100%;
-    margin: 0 25px;
+    margin: 0 60px;
     align-items: center;
     line-height: 70px;
 
     .header-logo-text {
-      color: white;
+      color: black;
       font-size: 24px;
       padding-left: 10px;
       vertical-align: middle;
-      font-family: $serif;
+      font-family: $sans;
       font-weight: bold;
+      letter-spacing: 0.7px;
     }
 
     .header-logo-image {
       display: inline-block;
-      font-size: 2em;
-      color: white;
+
+      img {
+        height: 30px;
+        width: 30px;
+        vertical-align: middle;
+      }
     }
 
   }
@@ -70,7 +77,7 @@ p {
 
     input {
       border-radius: 10px;
-      border: none;
+      border: solid $orwell-grey 1px;
       width: 250px;
       padding: 5px 10px;
     }
@@ -84,14 +91,14 @@ p {
   .header-menu {
     display: flex;
     flex-direction: row;
-    margin-right: 25px;
+    margin-right: 60px;
     height: 100%;
     align-items: center;
   }
 
   .header-menu-icon {
-    font-size: 1.5em;
-    color: white;
+    font-size: 1.3em;
+    color: black;
     padding: 0 10px;
   }
 }
@@ -104,7 +111,7 @@ p {
   height: 100%;
   width: 100vw;
   padding-top: 70px;
-  background-color: $orwell-lightblue;
+  background-color: $orwell-lightgrey;
 
   #main-wrapper {
     padding: 2% 10%;
@@ -141,6 +148,7 @@ p {
   margin-bottom: 20px;
   border-radius: 10px;
   background-color: white;
+  border: solid 1px $orwell-grey;
 }
 
 .advertisement-card {
@@ -167,8 +175,10 @@ p {
 }
 
 .post-caption {
-  color: #4a4a4a;
+  color: $orwell-darkgrey;
+  font-weight: 400;
   margin-bottom: 20px;
+  line-height: 20px;
 }
 
 .post-picture-single img {
@@ -205,7 +215,7 @@ p {
   align-items: center;
 
   .post-react-icon {
-    color: $orwell-blue;
+    color: black;
     font-size: 1.5em;
     margin: 0 10px;
   }
@@ -220,6 +230,7 @@ p {
   padding: 10px;
   font-family: $sans;
   box-sizing: border-box;
+  border: solid 1px $orwell-grey;
 }
 
 // TRENDING CARD
@@ -243,7 +254,7 @@ p {
       margin: 0;
     }
     .add-person-icon {
-      color: $orwell-blue;
+      color: $orwell-white;
       font-size: 1.5em;
       display: inline-block;
       vertical-align: middle;
@@ -286,8 +297,7 @@ canvas {
   #prompt {
     margin: 0;
     font-size: 5em;
-    font-family: $serif;
-    letter-spacing: 1px;
+    font-family: $monospace;
     text-align: center;
   }
 
@@ -301,7 +311,7 @@ canvas {
     line-height: 30px;
     padding-bottom: 20px;
     text-align: center;
-    font-family: $sans;
+    font-family: $monospace;
   }
 
   #prompt-submit {
@@ -310,5 +320,6 @@ canvas {
     color: white;
     float: right;
     margin-top: 20px;
+    font-family: $monospace;
   }
 }
