@@ -266,7 +266,8 @@ const fillRandArrays = () => {
 const moveCamera = () => {
   console.log(camera.position.z);
   console.log("trying to move");
-  camera.translateZ(-0.5);
+  if (camera.position.z <= 150)
+    camera.translateZ(-0.25);
 };
 
 
@@ -284,5 +285,6 @@ fillRandArrays();
 setTimeout(fadeSocialMediaPage, 7000);
 setTimeout(loadScene, 12000);
 setTimeout(beginCamera, 15000);
+setTimeout(stopCamera, 30000);
 
 animate();
