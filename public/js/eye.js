@@ -1,11 +1,17 @@
 smp = document.getElementById("social-media-page").style;
 c = document.getElementById("myCanvas").style;
+recording = document.getElementById("recording").style;
 wwp = document.getElementById("whos-watching").style;
 smp.opacity = 1;
 wwp.display = "none";
+recording.opacity = 0;
 
 const fadeSocialMediaPage = () => {
   (smp.opacity -= 0.03) < 0 ? (smp.display = "none") : setTimeout(fadeSocialMediaPage, 40);
+};
+
+const fadeRecording = () => {
+  (recording.opacity -= 0.03) < 0 ? (recording.display = "none") : setTimeout(fadeRecording, 40);
 };
 
 var renderer,
@@ -281,9 +287,18 @@ const moveCamera = () => {
   }
   else {
     stopAnimation();
-    wwp.display = "block";
-    c.display = "none";
+    showVideo();
   }
+};
+
+const showVideo = () => {
+  stopRecording();
+  recording.opacity = 1;
+  c.display = "none";
+  setTimeout(() => {
+    wwp.display = "block";
+    fadeRecording();
+  }, 10000);
 };
 
 trackingInit();

@@ -1,7 +1,7 @@
 var video = document.querySelector('video');
 function trackingInit(){
     var tracker = new clm.tracker({scoreThreshold : 0.4});
-    tracker.init(); 
+    tracker.init();
     tracker.start(video);
     setInterval(function updateCoords(){
         var halfvidX = video.offsetWidth/2.0
@@ -37,22 +37,21 @@ function stopRecordingCallback() {
 
 var recorder; // globally accessible
 
-    captureCamera(function(camera) {
-        setSrcObject(camera, video);
-        video.play();
+captureCamera(function(camera) {
+    setSrcObject(camera, video);
+    video.play();
 
-        recorder = RecordRTC(camera, {
-            type: 'video'
-        });
-
-        recorder.startRecording();
-
-        // release camera on stopRecording
-        recorder.camera = camera;
+    recorder = RecordRTC(camera, {
+        type: 'video'
     });
 
-document.getElementById('btn-stop-recording').onclick = function() {
-    this.disabled = true;
-    recorder.stopRecording(stopRecordingCallback);
-    video.removeAttribute('hidden');
-};
+    recorder.startRecording();
+
+    // release camera on stopRecording
+    recorder.camera = camera;
+});
+
+function stopRecording() {
+  recorder.stopRecording(stopRecordingCallback);
+  video.removeAttribute('hidden');
+}
