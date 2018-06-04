@@ -162,7 +162,7 @@ const upper_lid = (geometry, materials) => {
 const eye_ball = (geometry, materials) => {
   for (var i = 0; i < 141; i++) {
     var eye_ball_mesh = new THREE.Mesh(geometry, material);
-
+    console.log("hello");
     if (i == 140) {
       eye_ball_mesh.position.x = 0;
       eye_ball_mesh.position.y = 0;
@@ -214,10 +214,13 @@ const animate = () => {
     if (meshes[i].name == "upper_lid") {
       blink(meshes[i]);
     }
-    if (meshes[i].name == "eye_ball") {
-      meshes[i].rotation.y = faceX * maxXRot;
-      meshes[i].rotation.x = faceY * maxYRot;
-    }
+    //if (meshes[i].name == "eye_ball") {
+     // meshes[i].rotation.y = faceX * maxXRot;
+     // meshes[i].rotation.x = faceY * maxYRot;
+     // console.log(meshes[i].rotation.x);
+     // console.log(meshes[i].rotation.y);
+   // }
+   //meshes[i].lookAt(camera.position);
   }
   renderer.render(scene, camera);
 };
@@ -277,7 +280,7 @@ const fillRandArrays = () => {
 const moveCamera = () => {
   camera.translateZ(-0.25);
   if (camera.position.z > -100) {
-    setTimeout(moveCamera, 0);
+    setTimeout(moveCamera, 50);
   }
   else {
     stopAnimation();
