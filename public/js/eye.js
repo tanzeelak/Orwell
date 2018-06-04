@@ -200,7 +200,7 @@ const animate = () => {
   requestAnimationFrame(animate);
   for (i = 0; i < meshes.length; i++) {
     if (meshes[i].name == "upper_lid") {
-      setTimeout(blink(meshes[i]), Math.round(Math.random() * 100000));
+      blink(meshes[i]);
     }
     if (meshes[i].name == "eye_ball") {
       meshes[i].rotation.y = faceX * maxXRot;
