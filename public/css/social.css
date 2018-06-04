@@ -203,11 +203,6 @@ canvas {
 .hide {
   display: none; }
 
-
-#recording {
-  opacity: 0;
-}
-
 #myCanvas {
   position: fixed;
   width: 100vw !important;
@@ -237,13 +232,18 @@ canvas {
     line-height: 30px;
     padding-bottom: 20px;
     text-align: center;
-    font-family: "Source Code Pro", monospace; }
+    font-family: "Source Code Pro", monospace;
+    outline: none; }
   #whos-watching #prompt-submit {
     background-color: black;
     border: none;
     color: white;
     float: right;
     margin-top: 20px;
-    font-family: "Source Code Pro", monospace; }
+    font-family: "Source Code Pro", monospace;
+    outline: none; }
+
+#recording {
+  opacity: 0; }
 
 /*# sourceMappingURL=social.css.map */

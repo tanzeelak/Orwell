@@ -312,6 +312,7 @@ canvas {
     padding-bottom: 20px;
     text-align: center;
     font-family: $monospace;
+    outline: none;
   }
 
   #prompt-submit {
@@ -321,5 +322,10 @@ canvas {
     float: right;
     margin-top: 20px;
     font-family: $monospace;
+    outline: none;
   }
+}
+
+#recording {
+  opacity: 0;
 }

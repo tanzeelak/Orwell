@@ -1,16 +1,11 @@
 smp = document.getElementById("social-media-page").style;
+c = document.getElementById("myCanvas").style;
 wwp = document.getElementById("whos-watching").style;
 smp.opacity = 1;
 wwp.display = "none";
-wwp.opacity = 0;
 
 const fadeSocialMediaPage = () => {
   (smp.opacity -= 0.03) < 0 ? (smp.display = "none") : setTimeout(fadeSocialMediaPage, 40);
-};
-
-const fadeWhosWatching = () => {
-  wwp.display = "block";
-  (wwp.opacity += 0.03) > 1 ? null : setTimeout(fadeWhosWatching, 40);
 };
 
 var renderer,
@@ -280,27 +275,24 @@ const fillRandArrays = () => {
 
 
 const moveCamera = () => {
-  console.log(camera.position.z);
-  console.log("trying to move");
-  if (camera.position.z <= 150)
-    camera.translateZ(-0.25);
+  camera.translateZ(-0.25);
+  if (camera.position.z > -100) {
+    setTimeout(moveCamera, 0);
+  }
+  else {
+    stopAnimation();
+    wwp.display = "block";
+    c.display = "none";
+  }
 };
-
-
-const beginCamera = () => {
-  timedEye = setInterval(moveCamera, 0);
-};
-
-const stopCamera = () => {
-  window.clearInterval(timedEye);
-};
-
 
 trackingInit();
 fillRandArrays();
-setTimeout(fadeSocialMediaPage, 7000);
-setTimeout(loadScene, 12000);
-setTimeout(beginCamera, 15000);
-setTimeout(stopCamera, 30000);
-
-animate();
+setTimeout(() => {
+  fadeSocialMediaPage();
+  setTimeout(() => {
+    loadScene();
+    animate();
+    moveCamera();
+  }, 5000);
+}, 7000);
