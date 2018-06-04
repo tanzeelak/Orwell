@@ -195,9 +195,9 @@ const eye_ball = (geometry, materials) => {
 };
 
 const blink = (mesh) => {
-  if (meshes[i].rotation.x < -0.04) {
+  if (meshes[i].rotation.x < -0.05) {
     upper_flag = 0;
-  } else if (meshes[i].rotation.x > 1) {
+  } else if (meshes[i].rotation.x > 0.8) {
     upper_flag = 1;
   }
   if (!upper_flag) {
