@@ -5,8 +5,10 @@ var bodyParser = require('body-parser');
 var path = require('path');
 var router = express.Router();
 var app = express();
-var MongoClient = require('mongodb').MongoClient
-  , assert = require('assert');
+var mongo = require('mongodb');
+var assert = require('assert');
+//var MongoClient = require('mongodb').MongoClient
+//  , assert = require('assert');
 
 var url = 'mongodb://localhost:27017/orwell'
 
@@ -28,10 +30,9 @@ router.get("/",function(req,res){
     res.sendFile(path.join(__dirname + '/views/' + 'social.html'));
 });
 
-
 router.get('/get-data', function(req, res, next){
   var resultArray = []
-  mongo.connect(url, function() {
+  mongo.connect(url, function(err, db) {
     assert.equal(null, err);
     var cursor = db.collection('user-data').find();
     cursor.forEach(function(doc, err) {
@@ -46,9 +47,9 @@ router.get('/get-data', function(req, res, next){
 
 router.post('/insert', function(req, res, next){
   var item = {
-    name: req.body.name
+    username: req.body.username
   }
-  mongo.connect(url, function(err) {
+  mongo.connect(url, function(err, db) {
     assert.equal(null, err);
     db.collection('user-data').insertOne(item, function(err, result){
       assert.equal(null, err);

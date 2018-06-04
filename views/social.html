@@ -277,8 +277,10 @@
 
   <div id="whos-watching">
     <h1 id="prompt">Who's watching?</h1>
-    <input id="prompt-input" type="text" name="username" value="">
-    <input id="prompt-submit" type="submit" value="Enter">
+    <form action="/insert" method="post">
+      <input id="prompt-input" type="text" name="username" value="">
+      <input id="prompt-submit" type="submit" value="Enter">
+    </form>
   </div>
 </body>
 <script type="text/javascript" src="/node_modules/tracking/build/tracking-min.js"></script>
