@@ -78,10 +78,10 @@ const loadLights = () => {
 
 const loadTextures = () => {
   texture = new THREE.TextureLoader().load("/assets/neweye.jpg");
-  material = new THREE.MeshBasicMaterial({
+  material = new THREE.MeshPhongMaterial({
     map: texture
   });
-  material_eye_lid = new THREE.MeshBasicMaterial({
+  material_eye_lid = new THREE.MeshPhongMaterial({
     color: 0x303030
   });
 };
@@ -210,7 +210,7 @@ const animate = () => {
   AF = requestAnimationFrame(animate);
   for (i = 0; i < meshes.length; i++) {
     if (meshes[i].name == "upper_lid") {
-      setTimeout(blink(meshes[i]), Math.round(Math.random() * 100000));
+      blink(meshes[i]);
     }
     if (meshes[i].name == "eye_ball") {
       meshes[i].rotation.y = faceX * maxXRot;
