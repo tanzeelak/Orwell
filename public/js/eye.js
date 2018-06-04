@@ -68,10 +68,10 @@ const loadLights = () => {
 
 const loadTextures = () => {
   texture = new THREE.TextureLoader().load("/assets/neweye.jpg");
-  material = new THREE.MeshBasicMaterial({
+  material = new THREE.MeshPhongMaterial({
     map: texture
   });
-  material_eye_lid = new THREE.MeshBasicMaterial({
+  material_eye_lid = new THREE.MeshPhongMaterial({
     color: 0x303030
   });
 };
