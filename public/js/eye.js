@@ -14,7 +14,7 @@ const fadeWhosWatching = () => {
 };
 
 var renderer,
-  scenes = [],
+  scene,
   meshes = [],
   randX = [],
   randY = [],
@@ -60,7 +60,7 @@ const setFaceCoords = (setX, setY) => {
 
 //SCENE
 const loadScene = callback => {
-  scenes[0] = new THREE.Scene();
+  scene = new THREE.Scene();
   loadLights();
   loadTextures();
   loadLoader(callback);
@@ -70,10 +70,10 @@ const loadScene = callback => {
 const loadLights = () => {
   //LIGHTS
   light = new THREE.AmbientLight(0xffffff, 0.5);
-  scenes[0].add(light);
+  scene.add(light);
 
   light2 = new THREE.PointLight(0xffffff, 0.5);
-  scenes[0].add(light2);
+  scene.add(light2);
 };
 
 const loadTextures = () => {
@@ -122,7 +122,7 @@ const lower_lid = (geometry, materials) => {
 
     lower_lid_mesh.name = "lower_lid";
     meshes.push(lower_lid_mesh);
-    scenes[0].add(lower_lid_mesh);
+    scene.add(lower_lid_mesh);
   }
 };
 
@@ -154,7 +154,7 @@ const upper_lid = (geometry, materials) => {
     }
     upper_lid_mesh.name = "upper_lid";
     meshes.push(upper_lid_mesh);
-    scenes[0].add(upper_lid_mesh);
+    scene.add(upper_lid_mesh);
   }
 };
 
@@ -186,7 +186,7 @@ const eye_ball = (geometry, materials) => {
     }
     eye_ball_mesh.name = "eye_ball";
     meshes.push(eye_ball_mesh);
-    scenes[0].add(eye_ball_mesh);
+    scene.add(eye_ball_mesh);
   }
 };
 
@@ -210,14 +210,14 @@ const animate = () => {
   AF = requestAnimationFrame(animate);
   for (i = 0; i < meshes.length; i++) {
     if (meshes[i].name == "upper_lid") {
-      setTimeout(blink(meshes[i]), Math.round(Math.random() * 10000));
+      setTimeout(blink(meshes[i]), Math.round(Math.random() * 100000));
     }
     if (meshes[i].name == "eye_ball") {
       meshes[i].rotation.y = faceX * maxXRot;
       meshes[i].rotation.x = faceY * maxYRot;
     }
   }
-  renderer.render(scenes[0], camera);
+  renderer.render(scene, camera);
 };
 
 const stopAnimation = () => {
@@ -262,35 +262,27 @@ const fillRandArrays = () => {
   }
 };
 
+
+const moveCamera = () => {
+  console.log(camera.position.z);
+  console.log("trying to move");
+  camera.translateZ(-0.5);
+};
+
+
+const beginCamera = () => {
+  timedEye = setInterval(moveCamera, 0);
+};
+
+const stopCamera = () => {
+  window.clearInterval(timedEye);
+};
+
+
 trackingInit();
 fillRandArrays();
 setTimeout(fadeSocialMediaPage, 7000);
-setTimeout(loadScene, 10000);
+setTimeout(loadScene, 12000);
+setTimeout(beginCamera, 15000);
+
 animate();
-// setTimeout(stopAnimation, 30000);
-// setTimeout(fadeWhosWatching, 25000);
-
-
-var velocity = new THREE.Vector3();
-var prevTime = performance.now();
-var timedEye = setInterval(moveCamera, 0);
-const moveCamera = () => {
-  console.log("trying to move");
-  //camera.translateZ(-100);
-  //console.log("hello");
-  var time = performance.now();
-  var delta = (time - prevTime) / 1000;
-  //reset z velocity to be 0 always. But override it if user presses up or w. See next line...
-  velocity.z -= velocity.z * 10.0 * delta;
-  //if the user pressed 'up' or 'w', set velocity.z to a value > 0.
-  velocity.z -= 1000.0 * delta;
-  //pass velocity as an argument to translateZ and call it on camera.
-  camera.translateZ(velocity.z * delta);
-  prevTime = time;
-};
-
-setTimeout(stopCamera, 30000);
-
-const stopCamera = () => {
-    window.clearInterval(timedEye);
-};
