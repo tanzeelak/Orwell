@@ -72,10 +72,6 @@ const loadLights = () => {
 };
 
 const loadTextures = () => {
-  texture = new THREE.TextureLoader().load("/assets/neweye.jpg");
-  material = new THREE.MeshPhongMaterial({
-    map: texture
-  });
   material_eye_lid = new THREE.MeshPhongMaterial({
     color: 0x303030
   });
@@ -124,8 +120,10 @@ const lower_lid = (geometry, materials) => {
   }
 };
 
+
 const upper_lid = (geometry, materials) => {
-  for (var i = 0; i < 141; i++) {
+  for (var i = 0; i < 141; i++){
+
     var upper_lid_mesh = new THREE.Mesh(geometry, material_eye_lid);
 
     if (i == 140) {
@@ -159,10 +157,17 @@ const upper_lid = (geometry, materials) => {
   }
 };
 
-const eye_ball = (geometry, materials) => {
-  for (var i = 0; i < 141; i++) {
-    var eye_ball_mesh = new THREE.Mesh(geometry, material);
 
+const eye_ball = (geometry, materials) => {
+  var textures = ["/assets/blueeye.jpg", "/assets/browneye.jpg", "/assets/greeneye.jpg", "/assets/greyeye.jpg"];
+
+  for (var i = 0; i < 141; i++) {
+    console.log(Math.floor(Math.random()*4));
+    texture = new THREE.TextureLoader().load(textures[Math.floor(Math.random()*4)]);
+    material = new THREE.MeshPhongMaterial({
+      map: texture
+    });
+    var eye_ball_mesh = new THREE.Mesh(geometry, material);
     if (i == 140) {
       eye_ball_mesh.position.x = 0;
       eye_ball_mesh.position.y = 0;
@@ -210,15 +215,31 @@ const blink = (mesh) => {
 
 const animate = () => {
   AF = requestAnimationFrame(animate);
+
   for (i = 0; i < meshes.length; i++) {
-    if (meshes[i].name == "upper_lid") {
-      blink(meshes[i]);
-    }
+    meshes[i].lookAt(camera.position);
+    //console.log(meshes[i].rotation.x);
+  //  if (meshes[i].name == "upper_lid") {
+  //     blink(meshes[i]);
+  //   }
+    //console.log(meshes[i].rotation.x);
+    /*
     if (meshes[i].name == "eye_ball") {
-      meshes[i].rotation.y = faceX * maxXRot;
-      meshes[i].rotation.x = faceY * maxYRot;
-    }
+      //meshes[i].lookAt(camera.position);
+     // meshes[i].rotation.y = faceX * maxXRot;
+     // meshes[i].rotation.x = faceY * maxYRot;
+     // console.log(meshes[i].rotation.x);
+     // console.log(meshes[i].rotation.y);
+    }*/
+    //console.log(meshes[i].rotation.x);
+
+   // meshes[i].lookAt(new THREE.Vector3(0, camera.position.y, camera.position.z));
+
   }
+  // for (i = 0; i < meshes.legnth; i++)
+  // {
+  //   meshes[i].lookAt(camera.position);
+  // }
   renderer.render(scene, camera);
 };
 
@@ -277,7 +298,7 @@ const fillRandArrays = () => {
 const moveCamera = () => {
   camera.translateZ(-0.25);
   if (camera.position.z > -100) {
-    setTimeout(moveCamera, 0);
+    setTimeout(moveCamera, 50);
   }
   else {
     stopAnimation();

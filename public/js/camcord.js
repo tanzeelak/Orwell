@@ -12,7 +12,7 @@ function trackingInit(){
         }else{
             setFaceCoords(0, 0);
         }
-        console.log(pos[37], halfvidX)
+        //console.log(pos[37], halfvidX)
     }, 100);
 }
 
