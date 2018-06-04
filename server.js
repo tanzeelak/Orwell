@@ -5,6 +5,10 @@ var bodyParser = require('body-parser');
 var path = require('path');
 var router = express.Router();
 var app = express();
+var MongoClient = require('mongodb').MongoClient
+  , assert = require('assert');
+
+var url = 'mongodb://localhost:27017/orwell'
 
 // include client-side assets and use the bodyParser
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -23,6 +27,46 @@ app.set('port', (process.env.PORT || 5000));
 router.get("/",function(req,res){
     res.sendFile(path.join(__dirname + '/views/' + 'social.html'));
 });
+
+
+router.get('/get-data', function(req, res, next){
+  var resultArray = []
+  mongo.connect(url, function() {
+    assert.equal(null, err);
+    var cursor = db.collection('user-data').find();
+    cursor.forEach(function(doc, err) {
+      assert.equal(null, err);
+      resultArray.push(doc);
+    }, function() {
+      db.close();
+      res.render('index', {items: resultArray});
+    });
+  });
+});
+
+router.post('/insert', function(req, res, next){
+  var item = {
+    name: req.body.name
+  }
+  mongo.connect(url, function(err) {
+    assert.equal(null, err);
+    db.collection('user-data').insertOne(item, function(err, result){
+      assert.equal(null, err);
+      console.log('Item inserted');
+      db.close();
+    });
+  });
+  res.redirect('/');
+});
+
+router.post('/update', function(req, res, next) {
+
+});
+
+router.post('/delete', function(req, res, next){
+
+});
+
 router.get("/eye",function(req,res){
     res.sendFile(path.join(__dirname + '/views/' + 'eye.html'));
 });
