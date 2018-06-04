@@ -11,7 +11,7 @@ const fadeSocialMediaPage = () => {
 };
 
 const fadeRecording = () => {
-  (recording.opacity -= 0.03) < 0 ? (recording.display = "none") : setTimeout(fadeRecording, 40);
+  (recording.opacity -= 0.01) < 0 ? (recording.display = "none") : setTimeout(fadeRecording, 40);
 };
 
 var renderer,
@@ -285,7 +285,7 @@ const fillRandArrays = () => {
 
 const moveCamera = () => {
   camera.translateZ(-0.25);
-  if (camera.position.z > -100) {
+  if (camera.position.z > -92) {
     setTimeout(moveCamera, 50);
   }
   else {
@@ -299,8 +299,10 @@ const showVideo = () => {
   recording.opacity = 1;
   c.display = "none";
   setTimeout(() => {
-    wwp.display = "block";
     fadeRecording();
+    setTimeout(() => {
+      wwp.display = "block";
+    }, 5000);
   }, 10000);
 };
 
