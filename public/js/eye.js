@@ -68,10 +68,10 @@ const loadLights = () => {
 
 const loadTextures = () => {
   texture = new THREE.TextureLoader().load("/assets/neweye.jpg");
-  material = new THREE.MeshBasicMaterial({
+  material = new THREE.MeshPhongMaterial({
     map: texture
   });
-  material_eye_lid = new THREE.MeshBasicMaterial({
+  material_eye_lid = new THREE.MeshPhongMaterial({
     color: 0x303030
   });
 };
@@ -268,7 +268,8 @@ const fillRandArrays = () => {
 const moveCamera = () => {
   console.log(camera.position.z);
   console.log("trying to move");
-  camera.translateZ(-0.25);
+  if (camera.position.z <= 150)
+    camera.translateZ(-0.25);
 };
 
 
@@ -286,5 +287,6 @@ fillRandArrays();
 setTimeout(fadePage, 7000);
 setTimeout(loadScene, 11000);
 setTimeout(beginCamera, 15000);
-//setTimeout(animate, 11000);
+setTimeout(stopCamera, 30000);
+
 animate();
