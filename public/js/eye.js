@@ -1,8 +1,16 @@
-s = document.getElementById("social-media-page").style;
-s.opacity = 1;
+smp = document.getElementById("social-media-page").style;
+wwp = document.getElementById("whos-watching").style;
+smp.opacity = 1;
+wwp.display = "none";
+wwp.opacity = 0;
 
-const fadePage = () => {
-  (s.opacity -= 0.03) < 0 ? (s.display = "block") : setTimeout(fadePage, 40);
+const fadeSocialMediaPage = () => {
+  (smp.opacity -= 0.03) < 0 ? (smp.display = "none") : setTimeout(fadeSocialMediaPage, 40);
+};
+
+const fadeWhosWatching = () => {
+  wwp.display = "block";
+  (wwp.opacity += 0.03) > 1 ? null : setTimeout(fadeWhosWatching, 40);
 };
 
 var renderer,
@@ -24,6 +32,8 @@ var renderer,
   maxXRot = -1,
   maxYRot = 1,
   upper_flag = 0;
+
+var AF;
 
 //RENDERER
 renderer = new THREE.WebGLRenderer({
@@ -96,7 +106,7 @@ const lower_lid = (geometry, materials) => {
       lower_lid_mesh.position.x = randX[i];
       lower_lid_mesh.position.y = randY[i];
     }
-    
+
     if (i < 15) {
       lower_lid_mesh.position.z = -15 * randZ[i];
     }
@@ -157,7 +167,7 @@ const upper_lid = (geometry, materials) => {
 const eye_ball = (geometry, materials) => {
   for (var i = 0; i < 141; i++) {
     var eye_ball_mesh = new THREE.Mesh(geometry, material);
-    
+
     if (i == 140) {
       eye_ball_mesh.position.x = 0;
       eye_ball_mesh.position.y = 0;
@@ -197,14 +207,14 @@ const blink = (mesh) => {
   }
   if (!upper_flag) {
     meshes[i].rotation.x += 0.05;
-  } 
+  }
   else {
     meshes[i].rotation.x -= 0.05;
   }
 };
 
 const animate = () => {
-  requestAnimationFrame(animate);
+  AF = requestAnimationFrame(animate);
   for (i = 0; i < meshes.length; i++) {
     if (meshes[i].name == "upper_lid") {
       blink(meshes[i]);
@@ -216,6 +226,10 @@ const animate = () => {
   }
   renderer.render(scene, camera);
 };
+
+const stopAnimation = () => {
+  cancelAnimationFrame(AF);
+}
 
 const fillRandArrays = () => {
   for (var i = 0; i < 15; i++) {
@@ -274,7 +288,7 @@ const moveCamera = () => {
 
 
 const beginCamera = () => {
-  timedEye = setInterval(moveCamera, 0);    
+  timedEye = setInterval(moveCamera, 0);
 };
 
 const stopCamera = () => {
@@ -284,8 +298,8 @@ const stopCamera = () => {
 
 trackingInit();
 fillRandArrays();
-setTimeout(fadePage, 7000);
-setTimeout(loadScene, 11000);
+setTimeout(fadeSocialMediaPage, 7000);
+setTimeout(loadScene, 12000);
 setTimeout(beginCamera, 15000);
 setTimeout(stopCamera, 30000);
 
