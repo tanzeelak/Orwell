@@ -302,7 +302,7 @@ const fillRandArrays = () => {
 
 const moveCamera = () => {
   camera.translateZ(-0.20);
-  if (camera.position.z > -92) {
+  if (camera.position.z > -90) {
     setTimeout(moveCamera, 50);
   }
   else {
