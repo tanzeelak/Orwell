@@ -425,7 +425,6 @@
   </div>
 
   <div id="recording">
-    <img src="../public/img/analysis.png" alt="">
     <video id="video" preload loop muted autoplay></video>
   </div>
 
@@ -434,7 +433,7 @@
     <div id="prompt-wrapper">
       <h1 class="prompt">Who's watching?</h1>
       <form action="/insert" method="post" target="hiddenFrame" id="who-form" class="">
-        <input id="prompt-input" type="text" name="username" value="" placeholder="Enter your full name">
+        <input id="prompt-input" type="text" name="username" value="">
         <input id="prompt-submit" type="submit" value="Enter" onclick="showNamesList()">
       </form>
     </div>

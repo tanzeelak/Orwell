@@ -333,22 +333,17 @@ canvas {
 #recording {
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
-
-  img {
-    width: 100%;
-    opacity: 0.7;
-  }
+  overflow-y: hidden;
+  background-image: url('../img/analysis.png');
+  background-size: cover;
 }
 
 #video {
-  position: absolute;
-  top: 0;
-  right: 0;
   width: 100%;
   z-index: -1;
   background-color: black;
   overflow: hidden;
+  opacity: 0.5;
 }
 
 #names-wrapper {
