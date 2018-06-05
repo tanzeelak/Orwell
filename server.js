@@ -43,20 +43,20 @@ router.get("/", function (req, res) {
   res.render('social');
 });
 
-router.get('/get-data', function (req, res, next) {
+router.get('/you', function (req, res, next) {
   var resultArray = []
   mongo.connect(url, function (err, db) {
     assert.equal(null, err);
     var cursor = db.collection('user-data').find();
 
-    // cursor.forEach(function(doc, err) {
-    //   assert.equal(null, err);
-    //   resultArray.push(doc);
-    // }, function() {
-    //   db.close();
-    //   console.log(resultArray);
-    //   res.send('/', {items: resultArray});
-    // });
+    cursor.forEach(function(doc, err) {
+      assert.equal(null, err);
+      resultArray.push(doc);
+    }, function() {
+      db.close();
+      console.log(resultArray);
+      res.render('social', {items: resultArray});
+    });
   });
 });
 
@@ -65,6 +65,7 @@ router.post('/insert', function (req, res, next) {
     username: req.body.username
   }
   mongo.connect(url, function (err, db) {
+    // db.collection('user-data').remove({});
     assert.equal(null, err);
     db.collection('user-data').insertOne(item, function (err, result) {
       assert.equal(null, err);

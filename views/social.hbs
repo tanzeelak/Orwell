@@ -283,7 +283,14 @@
       <input id="prompt-input" type="text" name="username" value="">
       <input id="prompt-submit" type="submit" value="Enter">
     </form>
-    <a href="/get-data">LOAD DATA</a>
+    <a href="/you">LOAD DATA</a>
+    <div>
+      {{#each items}}
+      <div>
+        {{this.username}}
+      </div>
+      {{/each}}
+    </div>
   </div>
 </body>
 <script type="text/javascript" src="/node_modules/tracking/build/tracking-min.js"></script>
