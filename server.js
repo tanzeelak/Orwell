@@ -61,7 +61,6 @@ router.post('/insert', function (req, res, next) {
     username: req.body.username
   }
   mongo.connect(url, function (err, db) {
-    // db.collection('user-data').remove({});
     assert.equal(null, err);
     db.collection('user-data').insertOne(item, function (err, result) {
       assert.equal(null, err);

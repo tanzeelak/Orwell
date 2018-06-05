@@ -294,7 +294,7 @@ const moveCamera = () => {
 };
 
 const showVideo = () => {
-  // stopRecording(); //comment out bc video doesn't work anyway
+  stopRecording(); //comment out bc video doesn't work anyway
   recording.opacity = 1;
   c.display = "none";
   setTimeout(() => {

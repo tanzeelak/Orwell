@@ -9,6 +9,7 @@ A narrative illustrating the lack of security on social media. Orwell's story is
 - [Three.js](https://threejs.org/): JavaScript library and Application Programming Interface used to create and display animated 3D computer graphics in a web browser.
 - [Tracking.js](https://trackingjs.com/): Library for computer vision algorithms and techniques.
   - [Here for the readme](https://github.com/eduardolundgren/tracking.js/blob/master/README.md)
+- [MongoDB](https://mongodb.com): Free and open-source cross-platform document-oriented database program.
 
 ## Setting up the environment
 - Clone this repository.
@@ -22,6 +23,8 @@ A narrative illustrating the lack of security on social media. Orwell's story is
   - `yarn install`
 
 ## Run the server locally
+- Run mongoDB in one terminal.
+  - `mongod`
 - Run nodemon and check server `localhost:5000`. Nodemon watches for any changes in the .js files and updates the server correspondingly.
   - `nodemon`
   - To restart the server without exiting nodemon
