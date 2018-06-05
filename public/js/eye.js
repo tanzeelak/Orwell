@@ -322,6 +322,7 @@ const showVideo = () => {
     setTimeout(() => {
       fadeRecording();
       setTimeout(() => {
+        sound.pause();
         recording.display = "none";
         wwp.display = "block";
       }, 2000);
