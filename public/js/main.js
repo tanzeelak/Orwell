@@ -1,9 +1,12 @@
 function showNamesList() {
     document.getElementById("input-name").innerHTML = document.getElementById('prompt-input').value;
-    var x = document.getElementById("names-list");
-    if (x.classList.contains("hide")) {
-        x.classList.remove("hide")
+    var namesList = document.getElementById("names-list");
+    var whoForm = document.getElementById("who-form")
+    if (namesList.classList.contains("hide")) {
+        namesList.classList.remove("hide");
+        whoForm.classList.add("hide");
     } else {
-        x.classList.add("hide");
+        namesList.classList.add("hide");
+        whoForm.classList.remove("hide");
     }
 }
