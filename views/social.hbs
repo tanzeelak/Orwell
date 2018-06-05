@@ -429,20 +429,25 @@
     <video id="video" preload loop muted autoplay></video>
   </div>
 
-  <iframe name="hiddenFrame" width="0" height="0" border="0"></iframe>
+  <iframe name="hiddenFrame" width="0" height="0" border="0" class="hide"></iframe>
   <div id="whos-watching">
-    <h1 id="prompt">Who's watching?</h1>
-    <form action="/insert" method="post" target="hiddenFrame" id="who-form" class="">
-      <input id="prompt-input" type="text" name="username" value="">
-      <input id="prompt-submit" type="submit" value="Enter" onclick="showNamesList()">
-    </form>
-    <div id="names-list" class="hide">
-      <div id="input-name"></div> 
-      {{#each items}}
-      <div>
-        {{this.username}}
+    <div id="prompt-wrapper">
+      <h1 class="prompt">Who's watching?</h1>
+      <form action="/insert" method="post" target="hiddenFrame" id="who-form" class="">
+        <input id="prompt-input" type="text" name="username" value="" placeholder="Enter your full name">
+        <input id="prompt-submit" type="submit" value="Enter" onclick="showNamesList()">
+      </form>
+    </div>
+    <div id="names-wrapper" class="hide">
+      <h1 class="prompt">Who's watching?</h1>
+      <div id="names-list">
+        <p id="input-name"></p>
+        {{#each items}}
+        <p>
+          {{this.username}}
+        </p>
+        {{/each}}
       </div>
-      {{/each}}
     </div>
   </div>
 </body>

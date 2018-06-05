@@ -214,11 +214,10 @@ canvas {
   width: 100vw;
   height: 100vh;
   background-color: black;
-  color: white;
-  overflow-y: hidden; }
+  color: white; }
   #whos-watching #prompt-wrapper {
     padding: 20%; }
-  #whos-watching #prompt {
+  #whos-watching .prompt {
     margin: 0;
     font-size: 5em;
     font-family: "Source Code Pro", monospace;
@@ -249,10 +248,10 @@ canvas {
 
 #recording {
   width: 100vw;
-  height: 100vh; }
+  height: 100vh;
+  overflow: hidden; }
   #recording img {
     width: 100%;
-    height: 100%;
     opacity: 0.7; }
 
 #video {
@@ -261,6 +260,17 @@ canvas {
   right: 0;
   width: 100%;
   z-index: -1;
-  background-color: black; }
+  background-color: black;
+  overflow: hidden; }
+
+#names-wrapper {
+  margin-top: 100px; }
+
+#names-list {
+  margin: 50px 0;
+  text-align: center; }
+  #names-list p {
+    font-family: "Source Code Pro", monospace;
+    font-size: 18px; }
 
 /*# sourceMappingURL=social.css.map */
