@@ -218,7 +218,7 @@ canvas {
   #whos-watching #prompt-wrapper {
     padding: 20%; }
   #whos-watching .prompt {
-    margin: 0;
+    margin: 30px 0;
     font-size: 5em;
     font-family: "Source Code Pro", monospace;
     text-align: center; }
