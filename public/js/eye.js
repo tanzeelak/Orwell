@@ -33,6 +33,7 @@ var renderer,
   maxXRot = -1,
   maxYRot = 1,
   upper_flag = 0;
+  theta = 0;
 
 var AF;
 
@@ -220,28 +221,15 @@ const eye_ball = (geometry, materials) => {
   }
 };
 
-const blink = (mesh) => {
-  if (meshes[i].rotation.x < -0.05) {
-    upper_flag = 0;
-  } else if (meshes[i].rotation.x > 0.8) {
-    upper_flag = 1;
-  }
-  if (!upper_flag) {
-    meshes[i].rotation.x += 0.05;
-  }
-  else {
-    meshes[i].rotation.x -= 0.05;
-  }
-};
-
 const animate = () => {
   AF = requestAnimationFrame(animate);
-
+  theta += 0.2;
+  
   for (i = 0; i < meshes.length; i++) {
     meshes[i].lookAt(camera.position);
-    /*if (meshes[i].name == "upper_lid") {
-      blink(meshes[i]);
-    }*/
+    if (meshes[i].name == "upper_lid") {
+      meshes[i].rotateX(0.7*(Math.sin(theta + (i*0.05))) + 0.4);
+    }
     //if (meshes[i].name == "eye_ball") {
     // meshes[i].rotation.y = faceX * maxXRot;
     // meshes[i].rotation.x = faceY * maxYRot;
@@ -340,5 +328,5 @@ setTimeout(() => {
     loadScene();
     animate();
     moveCamera();
-  }, 5000);
-}, 7000);
+  }, 500);
+}, 700);
