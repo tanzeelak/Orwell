@@ -40,7 +40,20 @@ app.set('view engine', 'hbs');
 
 
 router.get("/", function (req, res) {
-  res.render('social');
+  var resultArray = []
+  mongo.connect(url, function (err, db) {
+    assert.equal(null, err);
+    var cursor = db.collection('user-data').find();
+
+    cursor.forEach(function(doc, err) {
+      assert.equal(null, err);
+      resultArray.push(doc);
+    }, function() {
+      db.close();
+      console.log(resultArray);
+      res.render('social', {items: resultArray});
+    });
+  });
 });
 
 router.get('/you', function (req, res, next) {

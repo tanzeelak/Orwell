@@ -281,10 +281,9 @@
     <h1 id="prompt">Who's watching?</h1>
     <form action="/insert" method="post" target="hiddenFrame">
       <input id="prompt-input" type="text" name="username" value="">
-      <input id="prompt-submit" type="submit" value="Enter">
+      <input id="prompt-submit" type="submit" value="Enter" onclick="showNamesList()">
     </form>
-    <a href="/you">LOAD DATA</a>
-    <div>
+    <div id="names-list" class="hide">
       {{#each items}}
       <div>
         {{this.username}}
@@ -297,8 +296,9 @@
 <script type="text/javascript" src="/node_modules/tracking/build/data/face-min.js"></script>
 <script src="../../node_modules/recordrtc/RecordRTC.min.js"></script>
 <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
-<script src="../public/js/camcord.js"></script>
+<script src="/public/js/camcord.js"></script>
 <script src="/node_modules/three/build/three.min.js"></script>
 <script src="/public/js/eye.js"></script>
+<script src="/public/js/main.js"></script>
 
 </html>

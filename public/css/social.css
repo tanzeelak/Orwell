@@ -209,4 +209,7 @@ canvas {
     border: none;
     color: white; }
 
+.hide {
+  display: none; }
+
 /*# sourceMappingURL=social.css.map */
