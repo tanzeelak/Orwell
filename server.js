@@ -69,7 +69,6 @@ router.post('/insert', function (req, res, next) {
       db.close();
     });
   });
-  res.redirect('/');
 });
 
 router.post('/update', function (req, res, next) {
