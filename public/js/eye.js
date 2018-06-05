@@ -227,7 +227,7 @@ const eye_ball = (geometry, materials) => {
 const animate = () => {
   AF = requestAnimationFrame(animate);
   theta += 0.2;
-  
+
   for (i = 0; i < meshes.length; i++) {
     meshes[i].lookAt(camera.position);
     if (meshes[i].name == "upper_lid") {
@@ -312,16 +312,19 @@ const moveCamera = () => {
 };
 
 const showVideo = () => {
-  stopRecording(); //comment out bc video doesn't work anyway
   recording.opacity = 1;
   c.display = "none";
+  video.src = '../public/img/static.mp4';
   setTimeout(() => {
-    fadeRecording();
+    stopRecording(); //comment out bc video doesn't work anyway
     setTimeout(() => {
-      recording.display = "none";
-      wwp.display = "block";
-    }, 2000);
-  }, 10000);
+      fadeRecording();
+      setTimeout(() => {
+        recording.display = "none";
+        wwp.display = "block";
+      }, 2000);
+    }, 10000);
+  }, 2000)
 };
 
 trackingInit();
