@@ -1,11 +1,17 @@
 smp = document.getElementById("social-media-page").style;
 c = document.getElementById("myCanvas").style;
+recording = document.getElementById("recording").style;
 wwp = document.getElementById("whos-watching").style;
 smp.opacity = 1;
 wwp.display = "none";
+recording.opacity = 0;
 
 const fadeSocialMediaPage = () => {
   (smp.opacity -= 0.03) < 0 ? (smp.display = "none") : setTimeout(fadeSocialMediaPage, 40);
+};
+
+const fadeRecording = () => {
+  (recording.opacity -= 0.01) < 0 ? (recording.display = "none") : setTimeout(fadeRecording, 40);
 };
 
 var renderer,
@@ -168,6 +174,10 @@ const eye_ball = (geometry, materials) => {
       map: texture
     });
     var eye_ball_mesh = new THREE.Mesh(geometry, material);
+<<<<<<< HEAD
+=======
+    console.log("hello");
+>>>>>>> master
     if (i == 140) {
       eye_ball_mesh.position.x = 0;
       eye_ball_mesh.position.y = 0;
@@ -218,23 +228,16 @@ const animate = () => {
 
   for (i = 0; i < meshes.length; i++) {
     meshes[i].lookAt(camera.position);
-    //console.log(meshes[i].rotation.x);
-  //  if (meshes[i].name == "upper_lid") {
-  //     blink(meshes[i]);
-  //   }
-    //console.log(meshes[i].rotation.x);
-    /*
-    if (meshes[i].name == "eye_ball") {
-      //meshes[i].lookAt(camera.position);
+    /*if (meshes[i].name == "upper_lid") {
+      blink(meshes[i]);
+    }*/
+    //if (meshes[i].name == "eye_ball") {
      // meshes[i].rotation.y = faceX * maxXRot;
      // meshes[i].rotation.x = faceY * maxYRot;
      // console.log(meshes[i].rotation.x);
      // console.log(meshes[i].rotation.y);
-    }*/
-    //console.log(meshes[i].rotation.x);
-
-   // meshes[i].lookAt(new THREE.Vector3(0, camera.position.y, camera.position.z));
-
+   // }
+   //meshes[i].lookAt(camera.position);
   }
   // for (i = 0; i < meshes.legnth; i++)
   // {
@@ -297,14 +300,29 @@ const fillRandArrays = () => {
 
 const moveCamera = () => {
   camera.translateZ(-0.25);
+<<<<<<< HEAD
   if (camera.position.z > -100) {
+=======
+  if (camera.position.z > -92) {
+>>>>>>> master
     setTimeout(moveCamera, 50);
   }
   else {
     stopAnimation();
-    wwp.display = "block";
-    c.display = "none";
+    showVideo();
   }
+};
+
+const showVideo = () => {
+  stopRecording();
+  recording.opacity = 1;
+  c.display = "none";
+  setTimeout(() => {
+    fadeRecording();
+    setTimeout(() => {
+      wwp.display = "block";
+    }, 5000);
+  }, 10000);
 };
 
 trackingInit();
