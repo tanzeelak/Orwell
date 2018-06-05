@@ -6,15 +6,16 @@ var path = require('path');
 var router = express.Router();
 var app = express();
 var mongo = require('mongodb');
-var mongoose = require('mongoose');
+// var mongoose = require('mongoose');
 var assert = require('assert');
+var hbs = require('hbs');
 
 var url = 'mongodb://localhost:27017/orwell'
 
-mongoose.connect('mongodb://localhost:27017/orwell'); //dbName is the database name from which you need to import the questions
-module.exports = mongoose.model('User', {
-  username: String
-})
+// mongoose.connect('mongodb://localhost:27017/orwell'); //dbName is the database name from which you need to import the questions
+// module.exports = mongoose.model('User', {
+//   username: String
+// })
 // include client-side assets and use the bodyParser
 app.use(bodyParser.urlencoded({
   extended: false
@@ -35,8 +36,11 @@ app.use(express.static(__dirname));
 
 app.set('port', (process.env.PORT || 5000));
 
+app.set('view engine', 'hbs');
+
+
 router.get("/", function (req, res) {
-  res.sendFile(path.join(__dirname + '/views/' + 'social.html'));
+  res.render('social');
 });
 
 router.get('/get-data', function (req, res, next) {
@@ -80,15 +84,13 @@ router.post('/delete', function (req, res, next) {
 
 });
 
-router.get("/eye", function (req, res) {
-  res.sendFile(path.join(__dirname + '/views/' + 'eye.html'));
-});
-
 router.get("*", function (req, res) {
   res.sendFile(path.join(__dirname + '/views/' + '404.html'));
 });
 
 app.use("/", router);
+
+app.use(express.static("public"));
 
 app.listen(app.get('port'), function () {
   console.log('Node app is running on port', app.get('port'));
