@@ -1,15 +1,25 @@
-s = document.getElementById("social-media-page").style;
-s.opacity = 1;
+smp = document.getElementById("social-media-page").style;
+c = document.getElementById("myCanvas").style;
+recording = document.getElementById("recording").style;
+wwp = document.getElementById("whos-watching").style;
+smp.opacity = 1;
+wwp.display = "none";
+recording.opacity = 0;
 
-const fadePage = () => {
-  (s.opacity -= 0.01) < 0 ? (s.display = "block") : setTimeout(fadePage, 40);
+const fadeSocialMediaPage = () => {
+  (smp.opacity -= 0.03) < 0 ? (smp.display = "none") : setTimeout(fadeSocialMediaPage, 40);
+};
+
+const fadeRecording = () => {
+  (recording.opacity -= 0.01) < 0 ? (recording.display = "none") : setTimeout(fadeRecording, 40);
 };
 
 var renderer,
-  scenes = [],
+  scene,
   meshes = [],
   randX = [],
   randY = [],
+  randZ = [],
   camera,
   myCanvas = document.getElementById("myCanvas"),
   loader,
@@ -20,11 +30,11 @@ var renderer,
   faceY,
   light,
   light2,
-  videoX = 320,
-  videoY = 240,
-  maxXRot = 1,
-  maxYRot = -1,
+  maxXRot = -1,
+  maxYRot = 1,
   upper_flag = 0;
+
+var AF;
 
 //RENDERER
 renderer = new THREE.WebGLRenderer({
@@ -47,12 +57,11 @@ camera = new THREE.PerspectiveCamera(
 
 const setFaceCoords = (setX, setY) => {
   faceX = setX; faceY = setY;
-  console.log(faceX, faceY)
 }
 
 //SCENE
 const loadScene = callback => {
-  scenes[0] = new THREE.Scene();
+  scene = new THREE.Scene();
   loadLights();
   loadTextures();
   loadLoader(callback);
@@ -62,18 +71,18 @@ const loadScene = callback => {
 const loadLights = () => {
   //LIGHTS
   light = new THREE.AmbientLight(0xffffff, 0.5);
-  scenes[0].add(light);
+  scene.add(light);
 
   light2 = new THREE.PointLight(0xffffff, 0.5);
-  scenes[0].add(light2);
+  scene.add(light2);
 };
 
 const loadTextures = () => {
   texture = new THREE.TextureLoader().load("/assets/neweye.jpg");
-  material = new THREE.MeshBasicMaterial({
+  material = new THREE.MeshPhongMaterial({
     map: texture
   });
-  material_eye_lid = new THREE.MeshBasicMaterial({
+  material_eye_lid = new THREE.MeshPhongMaterial({
     color: 0x303030
   });
 };
@@ -86,76 +95,224 @@ const loadLoader = () => {
 };
 
 const lower_lid = (geometry, materials) => {
-  for (var i = 0; i < 5; i++) {
+  for (var i = 0; i < 141; i++) {
     var lower_lid_mesh = new THREE.Mesh(geometry, material_eye_lid);
-    lower_lid_mesh.position.x = randX[i];
-    lower_lid_mesh.position.y = randY[i];
-    lower_lid_mesh.position.z = -10;
+
+    if (i == 140) {
+      lower_lid_mesh.position.x = 0;
+      lower_lid_mesh.position.y = 0;
+      lower_lid_mesh.position.z = -80;
+    }
+    else {
+      lower_lid_mesh.position.x = randX[i];
+      lower_lid_mesh.position.y = randY[i];
+    }
+
+    if (i < 15) {
+      lower_lid_mesh.position.z = -15 * randZ[i];
+    }
+    else if (i < 35) {
+      lower_lid_mesh.position.z = -30 * randZ[i];
+    }
+    else if (i < 65) {
+      lower_lid_mesh.position.z = -50 * randZ[i];
+    }
+    else if (i < 100) {
+      lower_lid_mesh.position.z = -70 * randZ[i];
+    }
+    else if (i < 140) {
+      lower_lid_mesh.position.z = -90 * randZ[i];
+    }
+
     lower_lid_mesh.name = "lower_lid";
     meshes.push(lower_lid_mesh);
-    scenes[0].add(lower_lid_mesh);
+    scene.add(lower_lid_mesh);
   }
 };
 
 const upper_lid = (geometry, materials) => {
-  for (var i = 0; i < 5; i++) {
+  for (var i = 0; i < 141; i++) {
     var upper_lid_mesh = new THREE.Mesh(geometry, material_eye_lid);
-    upper_lid_mesh.position.x = randX[i];
-    upper_lid_mesh.position.y = randY[i];
-    upper_lid_mesh.position.z = -10;
+
+    if (i == 140) {
+      upper_lid_mesh.position.x = 0;
+      upper_lid_mesh.position.y = 0;
+      upper_lid_mesh.position.z = -80;
+    }
+    else {
+      upper_lid_mesh.position.x = randX[i];
+      upper_lid_mesh.position.y = randY[i];
+    }
+
+    if (i < 15) {
+      upper_lid_mesh.position.z = -15 * randZ[i];
+    }
+    else if (i < 35) {
+      upper_lid_mesh.position.z = -30 * randZ[i];
+    }
+    else if (i < 65) {
+      upper_lid_mesh.position.z = -50 * randZ[i];
+    }
+    else if (i < 100) {
+      upper_lid_mesh.position.z = -70 * randZ[i];
+    }
+    else if (i < 140) {
+      upper_lid_mesh.position.z = -90 * randZ[i];
+    }
     upper_lid_mesh.name = "upper_lid";
     meshes.push(upper_lid_mesh);
-    scenes[0].add(upper_lid_mesh);
+    scene.add(upper_lid_mesh);
   }
 };
 
 const eye_ball = (geometry, materials) => {
-  for (var i = 0; i < 5; i++) {
+  for (var i = 0; i < 141; i++) {
     var eye_ball_mesh = new THREE.Mesh(geometry, material);
-    eye_ball_mesh.position.x = randX[i];
-    eye_ball_mesh.position.y = randY[i];
-    eye_ball_mesh.position.z = -10;
+    console.log("hello");
+    if (i == 140) {
+      eye_ball_mesh.position.x = 0;
+      eye_ball_mesh.position.y = 0;
+      eye_ball_mesh.position.z = -80;
+    }
+    else {
+      eye_ball_mesh.position.x = randX[i];
+      eye_ball_mesh.position.y = randY[i];
+    }
+
+    if (i < 15) {
+      eye_ball_mesh.position.z = -15 * randZ[i];
+    }
+    else if (i < 35) {
+      eye_ball_mesh.position.z = -30 * randZ[i];
+    }
+    else if (i < 65) {
+      eye_ball_mesh.position.z = -50 * randZ[i];
+    }
+    else if (i < 100) {
+      eye_ball_mesh.position.z = -70 * randZ[i];
+    }
+    else if (i < 140) {
+      eye_ball_mesh.position.z = -90 * randZ[i];
+    }
     eye_ball_mesh.name = "eye_ball";
     meshes.push(eye_ball_mesh);
-    scenes[0].add(eye_ball_mesh);
+    scene.add(eye_ball_mesh);
+  }
+};
+
+const blink = (mesh) => {
+  if (meshes[i].rotation.x < -0.05) {
+    upper_flag = 0;
+  } else if (meshes[i].rotation.x > 0.8) {
+    upper_flag = 1;
+  }
+  if (!upper_flag) {
+    meshes[i].rotation.x += 0.05;
+  }
+  else {
+    meshes[i].rotation.x -= 0.05;
   }
 };
 
 const animate = () => {
-  requestAnimationFrame(animate);
-  meshes.forEach(function(mesh) {
-    if (mesh.name == "upper_lid") {
-      if (mesh.rotation.x < -0.04) {
-        upper_flag = 0;
-      } else if (mesh.rotation.x > 1) {
-        upper_flag = 1;
-      }
-      if (!upper_flag) {
-        mesh.rotation.x += 0.015;
-      } else {
-        mesh.rotation.x -= 0.015;
-      }
+  AF = requestAnimationFrame(animate);
+  for (i = 0; i < meshes.length; i++) {
+    if (meshes[i].name == "upper_lid") {
+      blink(meshes[i]);
     }
-    if (mesh.name == "eye_ball") {
-      mesh.rotation.y = -(((faceX - ((videoX+100)/2))/((videoX+100)/2)) * maxXRot);
-      //mesh.rotation.x = -(((faceY - (videoY/2))/(videoY/2)) * maxYRot);
-    }
-  });
-  renderer.render(scenes[0], camera);
+    //if (meshes[i].name == "eye_ball") {
+     // meshes[i].rotation.y = faceX * maxXRot;
+     // meshes[i].rotation.x = faceY * maxYRot;
+     // console.log(meshes[i].rotation.x);
+     // console.log(meshes[i].rotation.y);
+   // }
+   //meshes[i].lookAt(camera.position);
+  }
+  renderer.render(scene, camera);
 };
 
-const fillRandArrays = (length, min, max) => {
-  max = Math.abs(min) + max + 1;
-  for (var i = 0; i < length; i++) {
-    randX[i] = Math.random() * max + min;
-    randY[i] = Math.random() * max + min;
+const stopAnimation = () => {
+  cancelAnimationFrame(AF);
+}
+
+const fillRandArrays = () => {
+  for (var i = 0; i < 15; i++) {
+    randX[i] = (Math.random() - 0.5) * 15;
+    randY[i] = (Math.random() - 0.5) * 15;
+    randZ[i] = Math.random();
+    while (randZ[i] < 0.5) {
+      randZ[i] = Math.random();
+    }
   }
-  console.log(randX);
-  console.log(randY);
+
+  for (var i = 15; i < 35; i++) {
+    randX[i] = (Math.random() - 0.5) * 30;
+    randY[i] = (Math.random() - 0.5) * 30;
+    randZ[i] = Math.random();
+    while (randZ[i] < 0.5) {
+      randZ[i] = Math.random();
+    }
+  }
+
+  for (var i = 35; i < 65; i++) {
+    randX[i] = (Math.random() - 0.5) * 45;
+    randY[i] = (Math.random() - 0.5) * 45;
+    randZ[i] = Math.random();
+    while (randZ[i] < 0.5) {
+      randZ[i] = Math.random();
+    }
+  }
+
+  for (var i = 65; i < 100; i++) {
+    randX[i] = (Math.random() - 0.5) * 60;
+    randY[i] = (Math.random() - 0.5) * 60;
+    randZ[i] = Math.random();
+    while (randZ[i] < 0.5) {
+      randZ[i] = Math.random();
+    }
+  }
+
+  for (var i = 100; i < 140; i++) {
+    randX[i] = (Math.random() - 0.5) * 60;
+    randY[i] = (Math.random() - 0.5) * 60;
+    randZ[i] = Math.random();
+    while (randZ[i] < 0.5) {
+      randZ[i] = Math.random();
+    }
+  }
+};
+
+
+const moveCamera = () => {
+  camera.translateZ(-0.25);
+  if (camera.position.z > -92) {
+    setTimeout(moveCamera, 50);
+  }
+  else {
+    stopAnimation();
+    showVideo();
+  }
+};
+
+const showVideo = () => {
+  stopRecording();
+  recording.opacity = 1;
+  c.display = "none";
+  setTimeout(() => {
+    fadeRecording();
+    setTimeout(() => {
+      wwp.display = "block";
+    }, 5000);
+  }, 10000);
 };
 
 trackingInit();
-fillRandArrays(3, -2, 2);
-setTimeout(fadePage, 7000);
-loadScene();
-animate();
+fillRandArrays();
+setTimeout(() => {
+  fadeSocialMediaPage();
+  setTimeout(() => {
+    loadScene();
+    animate();
+    moveCamera();
+  }, 5000);
+}, 7000);
