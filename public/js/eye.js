@@ -114,10 +114,10 @@ const loadLoader = () => {
 };
 
 const lower_lid = (geometry, materials) => {
-  for (var i = 0; i < 141; i++) {
+  for (var i = 0; i < 151; i++) {
     var lower_lid_mesh = new THREE.Mesh(geometry, material_eye_lid);
 
-    if (i == 140) {
+    if (i == 150) {
       lower_lid_mesh.position.x = 0;
       lower_lid_mesh.position.y = 0;
       lower_lid_mesh.position.z = -80;
@@ -139,7 +139,7 @@ const lower_lid = (geometry, materials) => {
     else if (i < 100) {
       lower_lid_mesh.position.z = -70 * randZ[i];
     }
-    else if (i < 140) {
+    else if (i < 150) {
       lower_lid_mesh.position.z = -90 * randZ[i];
     }
 
@@ -151,11 +151,11 @@ const lower_lid = (geometry, materials) => {
 
 
 const upper_lid = (geometry, materials) => {
-  for (var i = 0; i < 141; i++) {
+  for (var i = 0; i < 151; i++) {
 
     var upper_lid_mesh = new THREE.Mesh(geometry, material_eye_lid);
 
-    if (i == 140) {
+    if (i == 150) {
       upper_lid_mesh.position.x = 0;
       upper_lid_mesh.position.y = 0;
       upper_lid_mesh.position.z = -80;
@@ -177,7 +177,7 @@ const upper_lid = (geometry, materials) => {
     else if (i < 100) {
       upper_lid_mesh.position.z = -70 * randZ[i];
     }
-    else if (i < 140) {
+    else if (i < 150) {
       upper_lid_mesh.position.z = -90 * randZ[i];
     }
     upper_lid_mesh.name = "upper_lid";
@@ -188,9 +188,9 @@ const upper_lid = (geometry, materials) => {
 
 
 const eye_ball = (geometry, materials) => {
-  for (var i = 0; i < 141; i++) {
+  for (var i = 0; i < 151; i++) {
     var eye_ball_mesh = new THREE.Mesh(geometry, material);
-    if (i == 140) {
+    if (i == 150) {
       eye_ball_mesh.position.x = 0;
       eye_ball_mesh.position.y = 0;
       eye_ball_mesh.position.z = -80;
@@ -212,7 +212,7 @@ const eye_ball = (geometry, materials) => {
     else if (i < 100) {
       eye_ball_mesh.position.z = -70 * randZ[i];
     }
-    else if (i < 140) {
+    else if (i < 150) {
       eye_ball_mesh.position.z = -90 * randZ[i];
     }
     eye_ball_mesh.name = "eye_ball";
@@ -228,7 +228,7 @@ const animate = () => {
   for (i = 0; i < meshes.length; i++) {
     meshes[i].lookAt(camera.position);
     if (meshes[i].name == "upper_lid") {
-      meshes[i].rotateX(0.7*(Math.sin(theta + (i*0.05))) + 0.4);
+      meshes[i].rotateX(0.5*(Math.sin(theta + (i*0.05))) + 0.4);
     }
     //if (meshes[i].name == "eye_ball") {
     // meshes[i].rotation.y = faceX * maxXRot;
@@ -286,7 +286,7 @@ const fillRandArrays = () => {
     }
   }
 
-  for (var i = 100; i < 140; i++) {
+  for (var i = 100; i < 150; i++) {
     randX[i] = (Math.random() - 0.5) * 60;
     randY[i] = (Math.random() - 0.5) * 60;
     randZ[i] = Math.random();
