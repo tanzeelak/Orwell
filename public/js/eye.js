@@ -327,7 +327,7 @@ const showVideo = () => {
   }, 2000)
 };
 
-trackingInit();
+//trackingInit();
 fillRandArrays();
 setTimeout(() => {
   fadeSocialMediaPage();
