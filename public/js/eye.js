@@ -295,7 +295,7 @@ const moveCamera = () => {
 
 const showVideo = () => {
   // stopRecording(); //comment out bc video doesn't work anyway
-  navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(function(camera)recording.opacity = 1;
+  recording.opacity = 1;
   c.display = "none";
   setTimeout(() => {
     fadeRecording();
