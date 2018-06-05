@@ -219,9 +219,10 @@ const blink = (mesh) => {
 const animate = () => {
   AF = requestAnimationFrame(animate);
   for (i = 0; i < meshes.length; i++) {
-    if (meshes[i].name == "upper_lid") {
-      blink(meshes[i]);
-    }
+    meshes[i].lookAt(camera.position);
+    // if (meshes[i].name == "upper_lid") {
+    //   blink(meshes[i]);
+    // }
     //if (meshes[i].name == "eye_ball") {
      // meshes[i].rotation.y = faceX * maxXRot;
      // meshes[i].rotation.x = faceY * maxYRot;
