@@ -168,7 +168,6 @@ const upper_lid = (geometry, materials) => {
 const eye_ball = (geometry, materials) => {
   for (var i = 0; i < 141; i++) {
     var eye_ball_mesh = new THREE.Mesh(geometry, material);
-    console.log("hello");
     if (i == 140) {
       eye_ball_mesh.position.x = 0;
       eye_ball_mesh.position.y = 0;
@@ -295,8 +294,8 @@ const moveCamera = () => {
 };
 
 const showVideo = () => {
-  stopRecording();
-  recording.opacity = 1;
+  // stopRecording(); //comment out bc video doesn't work anyway
+  navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(function(camera)recording.opacity = 1;
   c.display = "none";
   setTimeout(() => {
     fadeRecording();
