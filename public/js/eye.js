@@ -314,9 +314,11 @@ const moveCamera = () => {
 const showVideo = () => {
   recording.opacity = 1;
   c.display = "none";
+  video.style.height = "100%";
   video.src = '../public/img/static.mp4';
   setTimeout(() => {
     stopRecording(); //comment out bc video doesn't work anyway
+    video.style.height = "auto";
     setTimeout(() => {
       fadeRecording();
       setTimeout(() => {
