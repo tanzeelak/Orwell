@@ -43,7 +43,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 
 //CAMERA
 camera = new THREE.PerspectiveCamera(
-  35,
+  70,
   window.innerWidth / window.innerHeight,
   0.1,
   1000
@@ -159,11 +159,11 @@ const upper_lid = (geometry, materials) => {
 
 
 const eye_ball = (geometry, materials) => {
-  var textures = ["/assets/blueeye.jpg", "/assets/browneye.jpg", "/assets/greeneye.jpg", "/assets/greyeye.jpg"];
+  //var textures = ["/assets/blueeye.jpg", "/assets/browneye.jpg", "/assets/greeneye.jpg", "/assets/greyeye.jpg"];
 
   for (var i = 0; i < 141; i++) {
-    console.log(Math.floor(Math.random()*4));
-    texture = new THREE.TextureLoader().load(textures[Math.floor(Math.random()*4)]);
+    //console.log(Math.floor(Math.random()*4));
+    texture = new THREE.TextureLoader().load("/assets/blueeye.jpg");
     material = new THREE.MeshPhongMaterial({
       map: texture
     });
