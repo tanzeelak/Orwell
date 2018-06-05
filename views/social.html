@@ -13,6 +13,8 @@
 </head>
 
 <body>
+    <iframe name="hiddenFrame" width="0" height="0" border="0" style="display: none;"></iframe>
+
   <canvas id="myCanvas" class="eye-canvas"></canvas>
 
   <div id="social-media-page">
@@ -277,10 +279,11 @@
 
   <div id="whos-watching">
     <h1 id="prompt">Who's watching?</h1>
-    <form action="/insert" method="post">
+    <form action="/insert" method="post" target="hiddenFrame">
       <input id="prompt-input" type="text" name="username" value="">
       <input id="prompt-submit" type="submit" value="Enter">
     </form>
+    <a href="/get-data">LOAD DATA</a>
   </div>
 </body>
 <script type="text/javascript" src="/node_modules/tracking/build/tracking-min.js"></script>
