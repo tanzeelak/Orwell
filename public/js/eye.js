@@ -55,8 +55,25 @@ camera = new THREE.PerspectiveCamera(
   1000
 );
 
+var listener = new THREE.AudioListener();
+camera.add(listener);
+
+
 const setFaceCoords = (setX, setY) => {
   faceX = setX; faceY = setY;
+}
+
+const loadAudio = () => {
+  sound = new THREE.Audio(listener);
+
+  var audioLoader = new THREE.AudioLoader();
+
+  audioLoader.load('assets/aphex-twin-audio.mp3', function (buffer) {
+    sound.setBuffer(buffer);
+    sound.setLoop(false);
+    sound.play();
+  });
+
 }
 
 //SCENE
@@ -64,6 +81,7 @@ const loadScene = callback => {
   scene = new THREE.Scene();
   loadLights();
   loadTextures();
+  loadAudio();
   loadLoader(callback);
   setTimeout(callback, 10000);
 };
@@ -78,6 +96,10 @@ const loadLights = () => {
 };
 
 const loadTextures = () => {
+  texture = new THREE.TextureLoader().load("/assets/blueeye.jpg");
+  material = new THREE.MeshPhongMaterial({
+    map: texture
+  });
   material_eye_lid = new THREE.MeshPhongMaterial({
     color: 0x303030
   });
@@ -128,7 +150,7 @@ const lower_lid = (geometry, materials) => {
 
 
 const upper_lid = (geometry, materials) => {
-  for (var i = 0; i < 141; i++){
+  for (var i = 0; i < 141; i++) {
 
     var upper_lid_mesh = new THREE.Mesh(geometry, material_eye_lid);
 
@@ -165,19 +187,8 @@ const upper_lid = (geometry, materials) => {
 
 
 const eye_ball = (geometry, materials) => {
-  //var textures = ["/assets/blueeye.jpg", "/assets/browneye.jpg", "/assets/greeneye.jpg", "/assets/greyeye.jpg"];
-
   for (var i = 0; i < 141; i++) {
-    //console.log(Math.floor(Math.random()*4));
-    texture = new THREE.TextureLoader().load("/assets/blueeye.jpg");
-    material = new THREE.MeshPhongMaterial({
-      map: texture
-    });
     var eye_ball_mesh = new THREE.Mesh(geometry, material);
-<<<<<<< HEAD
-=======
-    console.log("hello");
->>>>>>> master
     if (i == 140) {
       eye_ball_mesh.position.x = 0;
       eye_ball_mesh.position.y = 0;
@@ -232,12 +243,12 @@ const animate = () => {
       blink(meshes[i]);
     }*/
     //if (meshes[i].name == "eye_ball") {
-     // meshes[i].rotation.y = faceX * maxXRot;
-     // meshes[i].rotation.x = faceY * maxYRot;
-     // console.log(meshes[i].rotation.x);
-     // console.log(meshes[i].rotation.y);
-   // }
-   //meshes[i].lookAt(camera.position);
+    // meshes[i].rotation.y = faceX * maxXRot;
+    // meshes[i].rotation.x = faceY * maxYRot;
+    // console.log(meshes[i].rotation.x);
+    // console.log(meshes[i].rotation.y);
+    // }
+    //meshes[i].lookAt(camera.position);
   }
   // for (i = 0; i < meshes.legnth; i++)
   // {
@@ -300,11 +311,7 @@ const fillRandArrays = () => {
 
 const moveCamera = () => {
   camera.translateZ(-0.25);
-<<<<<<< HEAD
-  if (camera.position.z > -100) {
-=======
   if (camera.position.z > -92) {
->>>>>>> master
     setTimeout(moveCamera, 50);
   }
   else {
