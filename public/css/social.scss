@@ -289,14 +289,13 @@ canvas {
   height: 100vh;
   background-color: black;
   color: white;
-  overflow-y: hidden;
 
   #prompt-wrapper {
     padding: 20%;
   }
 
-  #prompt {
-    margin: 0;
+  .prompt {
+    margin: 30px 0;
     font-size: 5em;
     font-family: $monospace;
     text-align: center;
@@ -327,22 +326,36 @@ canvas {
   }
 }
 
+.hide {
+  display: none;
+}
+
 #recording {
   width: 100vw;
   height: 100vh;
-
-  img {
-    width: 100%;
-    height: 100%;
-    opacity: 0.7;
-  }
+  overflow-y: hidden;
+  background-image: url('../img/analysis.png');
+  background-size: cover;
 }
 
 #video {
-  position: absolute;
-  top: 0;
-  right: 0;
   width: 100%;
   z-index: -1;
   background-color: black;
+  overflow: hidden;
+  opacity: 0.5;
+}
+
+#names-wrapper {
+  margin-top: 100px;
+}
+
+#names-list {
+  margin: 50px 0;
+  text-align: center;
+
+  p {
+    font-family: $monospace;
+    font-size: 18px;
+  }
 }

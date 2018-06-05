@@ -1,6 +1,7 @@
 smp = document.getElementById("social-media-page").style;
 c = document.getElementById("myCanvas").style;
 recording = document.getElementById("recording").style;
+video = document.querySelector('video')
 wwp = document.getElementById("whos-watching").style;
 smp.opacity = 1;
 wwp.display = "none";
@@ -11,7 +12,9 @@ const fadeSocialMediaPage = () => {
 };
 
 const fadeRecording = () => {
-  (recording.opacity -= 0.01) < 0 ? (recording.display = "none") : setTimeout(fadeRecording, 40);
+  recording.background = "none";
+  video.src = '../public/img/static.mp4';
+  video.style.height = "100%";
 };
 
 var renderer,
@@ -309,14 +312,15 @@ const moveCamera = () => {
 };
 
 const showVideo = () => {
-  stopRecording();
+  stopRecording(); //comment out bc video doesn't work anyway
   recording.opacity = 1;
   c.display = "none";
   setTimeout(() => {
     fadeRecording();
     setTimeout(() => {
+      recording.display = "none";
       wwp.display = "block";
-    }, 5000);
+    }, 2000);
   }, 10000);
 };
 
@@ -328,5 +332,5 @@ setTimeout(() => {
     loadScene();
     animate();
     moveCamera();
-  }, 500);
-}, 700);
+  }, 5000);
+}, 7000);
