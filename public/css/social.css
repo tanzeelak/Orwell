@@ -253,7 +253,8 @@ canvas {
   background-image: url("../img/analysis.png");
   background-size: cover;
   position: absolute;
-  bottom: 0; }
+  bottom: 0;
+  z-index: -1; }
 
 #video {
   width: 100%;
