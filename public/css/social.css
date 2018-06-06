@@ -261,13 +261,21 @@ canvas {
   opacity: 0.5; }
 
 #names-wrapper {
-  margin-top: 100px; }
+  margin-top: 100px;
+  text-align: center; }
+  #names-wrapper #input-name {
+    font-size: 2em; }
+  #names-wrapper p {
+    font-family: "Source Code Pro", monospace;
+    font-size: 1em; }
 
 #names-list {
-  margin: 50px 0;
-  text-align: center; }
-  #names-list p {
-    font-family: "Source Code Pro", monospace;
-    font-size: 18px; }
+  margin: 50px auto;
+  max-width: 75%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around; }
+  #names-list .name-column {
+    text-align: center; }
 
 /*# sourceMappingURL=social.css.map */

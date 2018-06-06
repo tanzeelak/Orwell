@@ -425,13 +425,29 @@
     </div>
     <div id="names-wrapper" class="hide">
       <h1 class="prompt">Who's watching?</h1>
+      <p id="input-name"></p>
       <div id="names-list">
-        <p id="input-name"></p>
-        {{#each items}}
-        <p>
-          {{this.username}}
-        </p>
-        {{/each}}
+        <div class="name-column">
+          {{#each items}}
+          <p>
+            {{this.username}}
+          </p>
+          {{/each}}
+        </div>
+        <div class="name-column">
+          {{#each items}}
+          <p>
+            {{this.username}}
+          </p>
+          {{/each}}
+        </div>
+        <div class="name-column">
+          {{#each items}}
+          <p>
+            {{this.username}}
+          </p>
+          {{/each}}
+        </div>
       </div>
     </div>
   </div>

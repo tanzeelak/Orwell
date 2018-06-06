@@ -348,14 +348,26 @@ canvas {
 
 #names-wrapper {
   margin-top: 100px;
-}
-
-#names-list {
-  margin: 50px 0;
   text-align: center;
+
+  #input-name {
+    font-size: 2em;
+  }
 
   p {
     font-family: $monospace;
-    font-size: 18px;
+    font-size: 1em;
+  }
+}
+
+#names-list {
+  margin: 50px auto;
+  max-width: 75%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  .name-column {
+    text-align: center;
   }
 }
