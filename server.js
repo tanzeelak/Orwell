@@ -10,7 +10,7 @@ var mongo = require('mongodb');
 var assert = require('assert');
 var hbs = require('hbs');
 
-var url = 'mongodb://tester:tester1@ds016718.mlab.com:16718/orwell';
+var url = process.env.PROD_MONGODB
 
 // mongoose.connect('mongodb://localhost:27017/orwell'); //dbName is the database name from which you need to import the questions
 // module.exports = mongoose.model('User', {
